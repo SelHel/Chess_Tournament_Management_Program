@@ -9,7 +9,7 @@ class Controller:
     def __init__(self, view):
         """Initialize models and views."""
         # Models
-        self.players: List[Player] = []
+        self.players = []
     
         # Views
         self.view = view
@@ -24,4 +24,3 @@ class Controller:
     def run(self):
         """Run the script."""
         self.get_players()
-        self.__str__()
