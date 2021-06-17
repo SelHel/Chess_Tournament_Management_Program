@@ -15,10 +15,14 @@ class Controller:
     
     def get_players(self):
         """Get some players."""
-        while len(self.players) < 8:
+        while len(self.players) < 1:
             last_name = self.view.prompt_for_player()
-            player = Player(last_name)
-            self.players.cappend(player)
+            first_name = self.view.prompt_for_player()
+            birth_date = self.view.prompt_for_player()
+            sex = self.view.prompt_for_player()
+            rank = self.view.prompt_for_player()
+            player = Player(last_name, first_name, birth_date, sex, rank)
+            self.players.append(player)
     
     def run(self):
         """run the script."""
