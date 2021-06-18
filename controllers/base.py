@@ -18,8 +18,10 @@ class Controller:
         """Get some players."""
         while len(self.players) < 8:
             name = self.view.prompt_for_player()
-            player = Player(name)
+            rank = self.view.prompt_for_rank()
+            player = Player(name, rank)
             self.players.append(player)
+            
     
     def run(self):
         """Run the script."""
