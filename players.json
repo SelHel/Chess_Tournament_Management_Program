@@ -1,0 +1,66 @@
+[
+    
+        { "id":1,
+          "last_name":"Carlsen",
+          "first_name":"Magnus",
+          "birth_date":"1990/11/30",
+          "gender":"Homme",
+          "rank":1
+        },
+    
+        { "id":2,
+          "last_name":"Caruana",
+          "first_name":"Fabiano",
+          "birth_date":"1992/07/30",
+          "gender":"Homme",
+          "rank":2
+        },
+     
+        { "id":3,
+          "last_name":"Ding",
+          "first_name":"Liren",
+          "birth_date":"1992/10/24",
+          "gender":"Homme",
+          "rank":3
+        },
+    
+        { "id":4,
+          "last_name":"Nepomniachtchi",
+          "first_name":"Ian",
+          "birth_date":"1990/07/14",
+          "gender":"Homme",
+          "rank":4
+        },
+   
+        { "id":5,
+          "last_name":"Aronian",
+          "first_name":"Levon",
+          "birth_date":"1982/10/06",
+          "gender":"Homme",
+          "rank":5
+        },
+     
+        { "id":6,
+          "last_name":"Giri",
+          "first_name":"Anish",
+          "birth_date":"1994/06/28",
+          "gender":"Homme",
+          "rank":6
+        },
+     
+        { "id":7,
+          "last_name":"Grischuk",
+          "first_name":"Alexander",
+          "birth_date":"1983/10/31",
+          "gender":"Homme",
+          "rank":7
+        },
+    
+        { "id": 8,
+          "last_name":"Mamedyarov",
+          "first_name":"Shakhriyar",
+          "birth_date":"1985/04/12",
+          "gender":"Homme",
+          "rank":8
+        }
+  ]
