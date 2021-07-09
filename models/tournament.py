@@ -18,7 +18,7 @@ class Tournament(BaseModel):
     start_date: str
     end_date: str
     number_rounds: int
-    rounds: list
+    rounds: List[dict]
     players: list
     time_control: str
     description: str
@@ -76,9 +76,8 @@ class Tournament(BaseModel):
         return value
     
     @validator("rounds")
-    def _check_rounds(cls, value):
-        for round_data in value:
-            Round(**round_data)
+    def _check_rounds(cls, value: List[dict]):
+        value = [Round(**round_data) for round_data in value]
         return value
     
 tournament_manager = Manager(Tournament, lambda x: x.id)
