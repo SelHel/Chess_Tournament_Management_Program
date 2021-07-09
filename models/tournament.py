@@ -4,6 +4,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, validator
 
+from .round import Round
 from .player import player_manager as pm
 from utils import Manager
 
@@ -57,14 +58,15 @@ class Tournament(BaseModel):
     
     @validator("players")
     def _check_players(cls, value):
-        for player_id in value:
-            pm.find_by_id(player_id)
+        if isinstance(value, list):
+            for player_id in value:
+                pm.find_by_id(player_id)
         return value
     
     @validator("time_control")
     def _check_time_control(cls, value):
         if value.lower() not in ("bullet", "blitz", "coup rapide"):
-            raise ValueError("Le contrôle du temps est un bullet, un blitz ou un coup rapide")
+            raise ValueError("Le contrôle du temps doit être un bullet, un blitz ou un coup rapide.")
         return value.lower()
     
     @validator("description")
@@ -73,5 +75,10 @@ class Tournament(BaseModel):
             raise ValueError("La description ne doit pas dépasser 150 caractères.")
         return value
     
-
+    @validator("rounds")
+    def _check_rounds(cls, value):
+        for round_data in value:
+            Round(**round_data)
+        return value
+    
 tournament_manager = Manager(Tournament, lambda x: x.id)
