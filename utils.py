@@ -1,5 +1,4 @@
 import json
-from models.player import Player
 from typing import Callable
 
 
@@ -25,12 +24,4 @@ class Manager:
     
     def find_by_id(self, id: any) -> any:
         return self.items[id]
-
-    
-manager = Manager(Player, lambda x: x.id)
-manager.load_from_json("players.json")
-print(manager.find_by_id(5))
-
-        
-
 
