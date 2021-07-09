@@ -10,7 +10,7 @@ class Round(BaseModel):
     name: str
     start_time: datetime = datetime.now().isoformat()
     end_time: datetime
-    matches : list
+    matches : List[dict]
 
     @validator("name")
     def _check_len_name(cls, value: str):
@@ -23,9 +23,7 @@ class Round(BaseModel):
     
     @validator("matches")
     def _check_matches(cls, value: List[dict]):
-        for match_data in value:
-            Match(**match_data)
-        #value = [Match(**match_data) for match_data in value]
+        value = [Match(**match_data) for match_data in value]
         return value
 
 
