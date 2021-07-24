@@ -12,7 +12,7 @@
           "end_time": "2021-07-08T23:02:28.299614",
           "matches": [
             {
-              "id_player1": 1,
+              "id_player1": 8,
               "score_player1": 1.0,
               "id_player2": 2,
               "score_player2": 0.0
@@ -26,7 +26,7 @@
             {
               "id_player1": 3,
               "score_player1": 1.0,
-              "id_player2": 8,
+              "id_player2": 4,
               "score_player2": 0.0
             }]
 
