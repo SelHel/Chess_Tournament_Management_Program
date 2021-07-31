@@ -23,13 +23,12 @@ class Tournament(BaseModel):
     time_control: str
     description: str
 
-    
     @validator("location", "name")
     def check_len_name(cls, value):
         if len(value) > 25:
             raise ValueError("Le nom du tournoi ne doit pas dépasser 25 caractères.")
         return value
-    
+
     @validator("start_date", "end_date")
     def check_date_format(cls, value):
         try:
@@ -37,13 +36,13 @@ class Tournament(BaseModel):
         except ValueError:
             raise ValueError("La date du tournoi doit être au format AAAA-MM-JJ HH:mm.")
         return value
-    
+
     @validator("end_date")
     def check_dates_match(cls, value, values):
         if value < values["start_date"]:
             raise ValueError("La date de fin du tournoi doit être supérieure ou égale à la date de début.")
         return value
-    
+
     @validator("players")
     def check_players(cls, value):
         count = Counter(value)
@@ -53,22 +52,23 @@ class Tournament(BaseModel):
         for player_id in value:
             pm.find_by_id(player_id)
         return value
-    
+
     @validator("time_control")
     def check_time_control(cls, value):
         if value.lower() not in ("bullet", "blitz", "coup rapide"):
             raise ValueError("Le contrôle du temps doit être un bullet, un blitz ou un coup rapide.")
         return value.lower()
-    
+
     @validator("description")
     def check_description(cls, value):
         if len(value) > 150:
             raise ValueError("La description du tournoi ne doit pas dépasser 150 caractères.")
         return value
-    
+
     @validator("rounds")
     def check_rounds(cls, value: List[dict]):
         value = [Round(**round_data) for round_data in value]
         return value
-    
+
+
 tournament_manager = Manager(Tournament, lambda x: x.id)

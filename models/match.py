@@ -1,5 +1,5 @@
 from pydantic import BaseModel, validator
-from .player import Player, player_manager as pm
+from .player import player_manager as pm
 
 
 class Match(BaseModel):
@@ -14,9 +14,9 @@ class Match(BaseModel):
         try:
             pm.find_by_id(value)
         except ValueError:
-            raise ValueError(f"L'identifiant ne correspond à aucun joueur connu.")
+            raise ValueError("L'identifiant ne correspond à aucun joueur connu.")
         return value
-    
+
     @validator("score_player1", "score_player2")
     def check_scores(cls, value):
         if value not in (0.0, 0.5, 1.0):

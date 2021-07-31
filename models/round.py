@@ -17,7 +17,7 @@ class Round(BaseModel):
         if len(value) > 25:
             raise ValueError("Le nom du round ne doit pas dépasser 25 caractères.")
         return value
-    
+
     @validator("matches")
     def check_matches(cls, value: List[dict]):
         value = [Match(**match_data) for match_data in value]
