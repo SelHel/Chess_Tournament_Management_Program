@@ -12,3 +12,4 @@ class Name(str):
 class Gender(str, Enum):
     Male = "M"
     Female = "F"
+
