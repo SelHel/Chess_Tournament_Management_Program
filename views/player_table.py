@@ -25,5 +25,5 @@ class PlayerTable(Table):
                f"{player.last_name.ljust(20)} "\
                f"{player.first_name.ljust(20)} "\
                f"{player.birth_date} "\
-               f"{player.gender.value.rjust(15)} "\
+               f"{player.gender.value.rjust(20)} "\
                f"{str(player.rank).rjust(15)}"

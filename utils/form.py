@@ -13,7 +13,7 @@ class Form(View):
         for field, description, field_type in self.fields:
             while True:
                 try:
-                    data[field] = field_type(input(description + " ? "))
+                    data[field] = field_type(input(description + " : "))
                     break
                 except ValueError:
                     pass

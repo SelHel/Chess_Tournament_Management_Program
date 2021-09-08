@@ -1,16 +1,18 @@
 from models.player import player_manager as pm
 from models.tournament import tournament_manager as tm
 from utils.router import router
-from controllers import main_ctrl
-from controllers import players_ctrl
-from controllers import players_create_ctrl
-from controllers import players_all_rank_ctrl
-from controllers import players_all_name_ctrl
-from controllers import players_edit_ctrl
-from controllers import tournaments_ctrl
-from controllers import tournaments_create_ctrl
-from controllers import tournaments_play_ctrl
-from controllers import tournaments_all_ctrl
+from controllers import (
+    main_ctrl,
+    players_ctrl,
+    players_create_ctrl,
+    players_all_rank_ctrl,
+    players_all_name_ctrl,
+    players_edit_ctrl,
+    tournaments_ctrl,
+    tournaments_create_ctrl,
+    tournaments_play_ctrl,
+    tournaments_all_ctrl
+    )
 
 
 pm.load_from_json("json/players.json")

@@ -6,5 +6,6 @@ class MainMenu(Menu):
         super().__init__(
             "Menu principal",
             [("Gestion des joueurs", "/players"),
-                ("Gestion des tournois", "/tournaments"),
-                ("Quitter", None)])
+             ("Gestion des tournois", "/tournaments"),
+             ("Quitter", None)
+             ])

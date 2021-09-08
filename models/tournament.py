@@ -16,9 +16,9 @@ class Tournament(BaseModel):
     name: str
     location: str
     start_date: str
-    end_date: str
+    end_date: str = None
     number_rounds: PositiveInt
-    rounds: List[dict]
+    rounds: List[dict] = []
     players: list
     time_control: str
     description: str

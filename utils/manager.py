@@ -8,11 +8,13 @@ class Manager:
         self.items = {}
         self.item_type = item_type
         self.id_finder = id_finder
+        self.max_id = 0
 
     def load_from_json(self, path: str):
         with open(path) as file:
             for item_data in json.load(file):
-                self.create_item(**item_data)
+                item = self.create_item(**item_data)
+                self.max_id = max(item.id, self.max_id)
 
     def create_item(self, *args, **kwargs):
         item = self.item_type(*args, **kwargs)

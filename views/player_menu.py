@@ -6,7 +6,8 @@ class PlayerMenu(Menu):
         super().__init__(
             "Menu de gestion des joueurs",
             [("Ajouter un joueur", "/players/create"),
-                ("Lister tous les joueurs par classement", "/players/all/rank"),
-                ("Lister tous les joueurs par ordre alphabétique", "/players/all/name"),
-                ("Modifier le rang d'un joueur", "/players/edit"),
-                ("Retour", "/")])
+             ("Lister tous les joueurs par classement", "/players/all/rank"),
+             ("Lister tous les joueurs par ordre alphabétique", "/players/all/name"),
+             ("Modifier le classement d'un joueur", "/players/edit"),
+             ("Retour", "/")
+             ])
