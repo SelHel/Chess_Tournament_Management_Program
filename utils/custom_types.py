@@ -20,3 +20,9 @@ class PositiveInt(int):
         if int(value) < 0:
             raise ValueError("Le nombre doit être un entier positif.")
         return super().__new__(cls, value)
+
+
+class TimeControl(str, Enum):
+    Bullet = "bullet"
+    Blitz = "blitz"
+    FastMove = "coup rapide"
