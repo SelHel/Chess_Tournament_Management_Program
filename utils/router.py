@@ -6,6 +6,7 @@ class Router:
         self.routes = []
 
     def navigate(self, path: str):
+        print(path)
         if path is None:
             return
         for p, ctrl in self.routes:
