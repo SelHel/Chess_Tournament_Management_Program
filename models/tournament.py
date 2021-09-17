@@ -1,12 +1,11 @@
 from typing import List
 from datetime import datetime
 from collections import Counter
-
 from pydantic import BaseModel, PositiveInt, validator
-
 from .round import Round
 from .player import player_manager as pm
 from utils.manager import Manager
+from utils.custom_types import TimeControl
 
 
 class Tournament(BaseModel):
@@ -15,12 +14,12 @@ class Tournament(BaseModel):
     id: PositiveInt
     name: str
     location: str
-    start_date: str
-    end_date: str = None
+    start_date: datetime
+    end_date: datetime = None
     number_rounds: PositiveInt
     rounds: List[dict] = []
     players: list
-    time_control: str
+    time_control: TimeControl
     description: str
 
     @validator("location", "name")
@@ -29,13 +28,6 @@ class Tournament(BaseModel):
             raise ValueError("Le nom du tournoi ne doit pas dépasser 25 caractères.")
         return value
 
-    @validator("start_date", "end_date")
-    def check_date_format(cls, value):
-        try:
-            datetime.fromisoformat(value)
-        except ValueError:
-            raise ValueError("La date du tournoi doit être au format AAAA-MM-JJ HH:mm.")
-        return value
 
     @validator("end_date")
     def check_dates_match(cls, value, values):
@@ -52,12 +44,6 @@ class Tournament(BaseModel):
         for player_id in value:
             pm.find_by_id(player_id)
         return value
-
-    @validator("time_control")
-    def check_time_control(cls, value):
-        if value.lower() not in ("bullet", "blitz", "coup rapide"):
-            raise ValueError("Le contrôle du temps doit être un bullet, un blitz ou un coup rapide.")
-        return value.lower()
 
     @validator("description")
     def check_description(cls, value):
