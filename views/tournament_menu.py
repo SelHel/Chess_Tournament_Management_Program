@@ -7,6 +7,6 @@ class TournamentMenu(Menu):
             "Menu de gestion des tournois",
             [("Créer un nouveau tournoi", "/tournaments/create"),
              ("Reprendre un tournoi arrêté", "/tournaments/play"),
-             ("Lister tous les tournois", "/tournaments/all"),
+             ("Lister tous les tournois", "/tournaments/list/by-id"),
              ("Retour", "/")
              ])

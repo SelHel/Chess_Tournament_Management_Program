@@ -14,8 +14,7 @@ class AddPlayerForm(Form):
              ("bd_month", "Mois de naissance du joueur", PositiveInt),
              ("bd_day", "Jour de naissance du joueur", PositiveInt),
              ("gender", "Genre du joueur (F/M)", Gender),
-             ("rank", "Classement du joueur", PositiveInt)
-             ])
+             ("rank", "Classement du joueur", PositiveInt)])
 
 
 class EditPlayerForm(Form):
@@ -23,5 +22,4 @@ class EditPlayerForm(Form):
         super().__init__(
             "Formulaire de mise à jour du classement d'un joueur",
             [("id", "Saisir l'id du joueur", PositiveInt),
-             ("rank", "Saisir le nouveau classement du joueur", PositiveInt)
-             ])
+             ("rank", "Saisir le nouveau classement du joueur", PositiveInt)])
