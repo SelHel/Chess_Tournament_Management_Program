@@ -2,8 +2,8 @@
     { "id": 1,
       "name": "Tournoi de Berlin",
       "location": "Berlin",
-      "start_date": "2021-07-02 13:00",
-      "end_date": "2021-07-02 13:00",
+      "start_date": "2019-06-01 12:22",
+      "end_date": "2019-06-01 12:22",
       "number_rounds": 4,
       "rounds": [
         { 
