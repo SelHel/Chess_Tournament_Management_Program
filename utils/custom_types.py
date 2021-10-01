@@ -10,9 +10,9 @@ class Name(str):
         return super().__new__(cls, value)
 
 
-class Gender(str, Enum):
-    Male = "M"
-    Female = "F"
+class Gender(Enum):
+    MALE = "M"
+    FEMALE = "F"
 
 
 class PositiveInt(int):
@@ -22,7 +22,7 @@ class PositiveInt(int):
         return super().__new__(cls, value)
 
 
-class TimeControl(str, Enum):
-    Bullet = "bullet"
-    Blitz = "blitz"
-    FastMove = "coup rapide"
+class TimeControl(Enum):
+    BULLET = "bullet"
+    BLITZ = "blitz"
+    FASTMOVE = "coup rapide"

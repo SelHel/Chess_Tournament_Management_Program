@@ -9,8 +9,7 @@ from utils.custom_types import TimeControl
 
 
 class Tournament(BaseModel):
-    """Model representing a chess tournament."""
-
+    """ Modèle représentant un tournoi d'échec """
     id: PositiveInt
     name: str
     location: str
@@ -28,11 +27,16 @@ class Tournament(BaseModel):
             raise ValueError("Le nom du tournoi ne doit pas dépasser 25 caractères.")
         return value
 
-
     @validator("end_date")
     def check_dates_match(cls, value, values):
         if value < values["start_date"]:
             raise ValueError("La date de fin du tournoi doit être supérieure ou égale à la date de début.")
+        return value
+
+    @validator("players")
+    def check_nb_players(cls, value):
+        if len(value) < 2 or len(value) % 2 != 0:
+            raise ValueError("Le nombre de joueurs doit être pair et supérieur ou égal à 2.")
         return value
 
     @validator("players")

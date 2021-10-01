@@ -3,11 +3,11 @@ from .player import player_manager as pm
 
 
 class Match(BaseModel):
-    """Model representing a match of the chess tournament round."""
+    """ Modèle représentant un match du round du tournoi d'échecs """
     id_player1: int
     id_player2: int
-    score_player1: float
-    score_player2: float
+    score_player1: float = 0.5
+    score_player2: float = 0.5
 
     @validator("id_player1", "id_player2")
     def check_id(cls, value):

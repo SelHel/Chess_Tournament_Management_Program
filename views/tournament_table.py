@@ -4,7 +4,7 @@ from models.tournament import Tournament
 
 
 class TournamentTable(Table):
-    """ List tournaments """
+    """ Permet de lister les tournois """
     def __init__(self, tournaments: List[Tournament]):
         super().__init__("Liste des tournois", sorted(
             tournaments, key=lambda x: ((x.id))

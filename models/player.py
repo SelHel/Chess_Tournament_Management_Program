@@ -5,14 +5,13 @@ from utils.manager import Manager
 
 
 class Player(BaseModel):
-    """Model representing a chess player."""
+    """ Modèle représentant un joueur d'échec """
     id: PositiveInt
     last_name: Name
     first_name: Name
     birth_date: date
     gender: Gender
     rank: PositiveInt
-
 
     @validator("birth_date")
     def check_player_age(cls, value):

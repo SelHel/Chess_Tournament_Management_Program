@@ -6,7 +6,7 @@ from .match import Match
 
 
 class Round(BaseModel):
-    """Model representing a round of the chess tournament."""
+    """ Modèle représentant un round du tounroi d'échec """
     name: str
     start_time: str
     end_time: str

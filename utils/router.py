@@ -2,6 +2,7 @@ from typing import Callable
 
 
 class Router:
+    """ Permet de naviguer entre les menus """
     def __init__(self):
         self.routes = []
 

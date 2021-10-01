@@ -3,7 +3,7 @@ from .menu import Menu
 
 
 class Table(Menu):
-
+    """Permet de générer un tableau """
     def __init__(
         self,
         title: str,

@@ -4,7 +4,7 @@ from models.player import Player
 
 
 class PlayerTable(Table):
-    """ List players """
+    """ Permet de lister les joueurs """
     def __init__(self, players: List[Player], sorting: str):
         inv_sorting = "by-name" if sorting == "by-rank" else "by-rank"
         super().__init__("Liste des joueurs", sorted(

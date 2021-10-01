@@ -3,6 +3,7 @@ from utils.view import View
 
 
 class Menu(View):
+    """ Permet de construire un menu """
     def __init__(self, title: str, choices: List[Tuple[str, str]], content=""):
         self.paths = [path for _, path in choices]
         content = content + "\n" + "\n".join([f"{i} - {choice}" for i, (choice, _) in enumerate(choices, start=1)])

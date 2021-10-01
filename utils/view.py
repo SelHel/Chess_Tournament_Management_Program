@@ -2,6 +2,7 @@ import os
 
 
 class View:
+    """ Permet de créer une vue et de l'afficher à l'utilisateur."""
     def __init__(self, title: str, content: str = "", blocking: bool = False):
         self.title = title
         self.content = content

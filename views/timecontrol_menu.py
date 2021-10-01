@@ -5,5 +5,5 @@ from utils.custom_types import TimeControl
 class TimeControlMenu(EnumMenu):
     def __init__(self):
         super().__init__(
-            "Menu de sélection du contrôle du temps",
+            "Sélection du type de contrôle du temps",
             TimeControl)

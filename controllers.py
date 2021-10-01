@@ -1,5 +1,6 @@
 from datetime import date, datetime
-
+from views.result_menu import ResultMenu
+from utils.match_making import generate_round_matches
 from utils.router import router
 from views.error import Error
 from views.player_table import PlayerTable
@@ -9,7 +10,7 @@ from views.tournament_table import TournamentTable
 from views.tournament_menu import TournamentMenu
 from views.player_form import AddPlayerForm, EditPlayerForm
 from views.tournament_form import AddTournamentForm, LoadTournamentForm
-from views.playerchoice_menu import PlayerChoiceMenu
+from views.player_choice_menu import PlayerChoiceMenu
 from models.player import player_manager as pm
 from models.tournament import tournament_manager as tm
 
@@ -45,10 +46,10 @@ def players_all_name_ctrl():
 
 def players_edit_ctrl():
     while True:
-        form_data = EditPlayerForm().display()
+        data = EditPlayerForm().display()
         try:
-            player = pm.find_by_id(form_data["id"])
-            player.rank = form_data["rank"]
+            player = pm.find_by_id(data["id"])
+            player.rank = data["rank"]
             break
         except KeyError:
             Error("Veuillez saisir un id et un classement valide.").display()
@@ -70,7 +71,6 @@ def tournaments_create_ctrl():
         data["players"].append(player_id)
         players = [player for player in players if player_id != player.id]
     try:
-        input(data)
         tm.create_item(**data)
     except Exception as e:
         Error(f"Impossible de créer le tournoi: {str(e)}").display()
@@ -78,7 +78,25 @@ def tournaments_create_ctrl():
 
 
 def tournaments_play_ctrl():
-    LoadTournamentForm().display()
+    while True:
+        data = LoadTournamentForm().display()
+        try:
+            tournament = tm.find_by_id(data["id"])
+            players = [pm.find_by_id(player_id) for player_id in tournament.players]
+            tournament_matches = []
+            tournament_scores = []
+
+            for number_round in range(1, tournament.number_rounds):
+                round_matches = generate_round_matches(players, tournament_matches, tournament_scores, number_round)
+                for match in round_matches:
+                    result_p1 = ResultMenu(pm.find_by_id(match[0]), pm.find_by_id(match[1])).display()
+                    result_p2 = 1 - result_p1
+                    tournament_scores.append(((match[0], result_p1), (match[1], result_p2)))
+                tournament_matches += round_matches
+            input(tournament_scores)
+            break
+        except KeyError:
+            Error("Veuillez saisir un id de tournoi valide.").display()
     router.navigate("/tournaments")
 
 

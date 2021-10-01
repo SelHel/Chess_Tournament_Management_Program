@@ -3,7 +3,7 @@ from typing import Callable
 
 
 class Manager:
-    """Gérer une collection d'objets"""
+    """Permet de gérer une collection d'objets"""
     def __init__(self, item_type: type, id_finder: Callable[[any], any]):
         self.items = {}
         self.item_type = item_type
