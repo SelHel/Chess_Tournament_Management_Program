@@ -1,6 +1,5 @@
 from views.timecontrol_menu import TimeControlMenu
 from utils.custom_types import PositiveInt
-
 from utils.form import Form
 
 

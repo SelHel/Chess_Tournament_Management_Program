@@ -1,8 +1,9 @@
-from models.player import player_manager as pm
-from models.tournament import tournament_manager as tm
+from utils.player_manager import pm
+from utils.tournament_manager import tm
 from utils.router import router
 from controllers import (
     main_ctrl,
+    quit_ctrl,
     players_ctrl,
     players_create_ctrl,
     players_all_rank_ctrl,
@@ -15,11 +16,12 @@ from controllers import (
     )
 
 
-pm.load_from_json("json/players.json")
+pm.load_from_db("json/players.json")
 
-tm.load_from_json("json/tournaments.json")
+tm.load_from_db("json/tournaments.json")
 
 router.add_route("/", main_ctrl)
+router.add_route("/quit", quit_ctrl)
 router.add_route("/players", players_ctrl)
 router.add_route("/tournaments", tournaments_ctrl)
 router.add_route("/players/create", players_create_ctrl)

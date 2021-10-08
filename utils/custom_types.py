@@ -26,3 +26,11 @@ class TimeControl(Enum):
     BULLET = "bullet"
     BLITZ = "blitz"
     FASTMOVE = "coup rapide"
+
+
+class Score(Enum):
+    WIN = 1.0
+    LOSE = 0.0
+    DRAW = 0.5
+    UNKNOWN = -1
+

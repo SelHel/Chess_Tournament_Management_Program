@@ -1,7 +1,6 @@
 from datetime import date
 from pydantic import BaseModel, PositiveInt, validator
 from utils.custom_types import Name, Gender
-from utils.manager import Manager
 
 
 class Player(BaseModel):
@@ -20,6 +19,3 @@ class Player(BaseModel):
         if player_age < 16:
             raise ValueError("Le joueur doit avoir au minimum 16 ans.")
         return value
-
-
-player_manager = Manager(Player, lambda x: x.id)

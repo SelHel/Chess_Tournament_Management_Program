@@ -1,5 +1,6 @@
 import json
 from typing import Callable
+from tinydb import TinyDB
 
 
 class Manager:
@@ -10,7 +11,14 @@ class Manager:
         self.id_finder = id_finder
         self.max_id = 0
 
-    def load_from_json(self, path: str):
+    def load_from_db(self, path: str):
+        db = TinyDB('json/db.json')
+        with open(path) as file:
+            for item_data in json.load(file):
+                item = self.create_item(**item_data)
+                self.max_id = max(item.id, self.max_id)
+
+    def save_to_db(self, path: str):
         with open(path) as file:
             for item_data in json.load(file):
                 item = self.create_item(**item_data)

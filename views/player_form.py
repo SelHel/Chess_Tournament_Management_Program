@@ -1,5 +1,4 @@
 from utils.custom_types import PositiveInt
-
 from utils.form import Form
 from utils.custom_types import Name, Gender
 

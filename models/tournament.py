@@ -2,10 +2,11 @@ from typing import List
 from datetime import datetime
 from collections import Counter
 from pydantic import BaseModel, PositiveInt, validator
+from models.match import Match
 from .round import Round
-from .player import player_manager as pm
-from utils.manager import Manager
 from utils.custom_types import TimeControl
+from utils.player_manager import pm
+from utils.player_id import PlayerId
 
 
 class Tournament(BaseModel):
@@ -13,13 +14,65 @@ class Tournament(BaseModel):
     id: PositiveInt
     name: str
     location: str
-    start_date: datetime
+    start_date: datetime = datetime.today()
     end_date: datetime = None
     number_rounds: PositiveInt
-    rounds: List[dict] = []
-    players: list
+    rounds: List[Round] = []
+    players: List[PlayerId] = []
     time_control: TimeControl
     description: str
+
+    @property
+    def is_over(self):
+        return self.end_date is not None
+
+    @property
+    def played_matches(self) -> List[Match]:
+        return [(match for match in rnd.matches if match.played) for rnd in self.rounds]
+
+    @property
+    def matches(self) -> List[Match]:
+        return [(match for match in rnd.matches) for rnd in self.rounds]
+
+    def get_player_score(self, player_id: PositiveInt):
+        score = 0.
+        for match in self.played_matches:
+            if match.id_player1 == player_id:
+                score += match.score_player1
+            elif match.id_player2 == player_id:
+                score += match.score_player2
+        return score
+
+    def generate_match(self, p1, players):
+        for p2 in players:
+            match = Match(id_player1=p1.id, id_player2=p2.id)
+            if match not in self.matches:
+                players.pop(players.index(p2))
+                return match
+        p2 = players.pop(0)
+        match = Match(id_player1=p1.id, id_player2=p2.id)
+        return match
+
+    def generate_first_round(self, rnd):
+        players = sorted([pm.find_by_id(player_id) for player_id in self.players], key=lambda x: (x.rank, x.last_name, x.first_name))
+        rnd.matches += [Match(id_player1=a.id, id_player2=b.id) for a, b in zip(players[4:], players[:4])]
+        return rnd
+
+    def generate_next_round(self, rnd):
+        players = sorted([pm.find_by_id(player_id) for player_id in self.players], key=lambda x: (
+            -self.get_player_score(x.id), x.rank))
+        while players:
+            p1 = players.pop(0)
+            match = self.generate_match(p1, players)
+            rnd.matches.append(match)
+        return rnd
+
+    def generate_round(self, round_name, number_round):
+        rnd = Round(name=round_name)
+        if number_round == 1:
+            return self.generate_first_round(rnd)
+        else:
+            return self.generate_next_round(rnd)
 
     @validator("location", "name")
     def check_len_name(cls, value):
@@ -56,9 +109,6 @@ class Tournament(BaseModel):
         return value
 
     @validator("rounds")
-    def check_rounds(cls, value: List[dict]):
+    def check_rounds(cls, value: List[Round]):
         value = [Round(**round_data) for round_data in value]
         return value
-
-
-tournament_manager = Manager(Tournament, lambda x: x.id)

@@ -7,5 +7,5 @@ class MainMenu(Menu):
             "Menu principal",
             [("Gestion des joueurs", "/players"),
              ("Gestion des tournois", "/tournaments"),
-             ("Quitter", None)
+             ("Quitter", "/quit")
              ])

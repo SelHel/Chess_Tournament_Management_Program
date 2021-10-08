@@ -1,24 +1,17 @@
+from datetime import datetime
 from typing import List
-
 from pydantic import BaseModel, validator
-
+from pydantic.types import constr
 from .match import Match
 
 
 class Round(BaseModel):
     """ Modèle représentant un round du tounroi d'échec """
-    name: str
-    start_time: str
-    end_time: str
-    matches: List[dict]
-
-    @validator("name")
-    def check_len_name(cls, value: str):
-        if len(value) > 25:
-            raise ValueError("Le nom du round ne doit pas dépasser 25 caractères.")
-        return value
+    name: constr(min_length=2, max_length=10)
+    start_time: datetime = datetime.today()
+    end_time: datetime = None
+    matches: List[Match] = []
 
     @validator("matches")
-    def check_matches(cls, value: List[dict]):
-        value = [Match(**match_data) for match_data in value]
-        return value
+    def check_matches(cls, value: List[Match]):
+        return [Match(**match_data) for match_data in value]

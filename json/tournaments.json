@@ -2,36 +2,8 @@
     { "id": 1,
       "name": "Tournoi de Berlin",
       "location": "Berlin",
-      "start_date": "2019-06-01 12:22",
-      "end_date": "2019-06-01 12:22",
       "number_rounds": 4,
-      "rounds": [
-        { 
-          "name": "Round 1",
-          "start_time": "2021-07-08T23:02:28.299614",
-          "end_time": "2021-07-08T23:02:28.299614",
-          "matches": [
-            {
-              "id_player1": 8,
-              "score_player1": 1.0,
-              "id_player2": 2,
-              "score_player2": 0.0
-            }]
-        },
-        {
-          "name": "Round 2",
-          "start_time": "2021-07-08T23:02:28.299614",
-          "end_time": "2021-07-08T23:02:28.299614",
-          "matches": [
-            {
-              "id_player1": 3,
-              "score_player1": 1.0,
-              "id_player2": 4,
-              "score_player2": 0.0
-            }]
-
-        }
-      ],
+      "rounds": [],
       "players": [1, 2, 3, 4, 5, 6, 7, 8],
       "time_control": "bullet",
       "description": "Le tournoi de Berlin commence ce jour."
