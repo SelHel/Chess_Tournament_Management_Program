@@ -1,5 +1,3 @@
-from utils.player_manager import pm
-from utils.tournament_manager import tm
 from utils.router import router
 from controllers import (
     main_ctrl,
@@ -12,13 +10,10 @@ from controllers import (
     tournaments_ctrl,
     tournaments_create_ctrl,
     tournaments_play_ctrl,
-    tournaments_all_ctrl
+    tournaments_all_ctrl,
+    tournaments_rounds_ctrl,
+    tournaments_matches_ctrl
     )
-
-
-pm.load_from_db("json/players.json")
-
-tm.load_from_db("json/tournaments.json")
 
 router.add_route("/", main_ctrl)
 router.add_route("/quit", quit_ctrl)
@@ -31,6 +26,8 @@ router.add_route("/players/edit", players_edit_ctrl)
 router.add_route("/tournaments/create", tournaments_create_ctrl)
 router.add_route("/tournaments/play", tournaments_play_ctrl)
 router.add_route("/tournaments/list/by-id", tournaments_all_ctrl)
+router.add_route("/tournaments/rounds/list", tournaments_rounds_ctrl)
+router.add_route("/tournaments/matches/list", tournaments_matches_ctrl)
 
 
 router.navigate("/")
