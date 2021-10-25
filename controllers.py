@@ -1,29 +1,40 @@
 import sys
 from datetime import date
+from views.match_table import MatchTable
 from views.result_menu import ResultMenu
 from utils.router import router
 from views.error import Error
 from views.player_table import PlayerTable
 from views.main_menu import MainMenu
 from views.player_menu import PlayerMenu
+from views.round_table import RoundTable
+from views.tournament_choice_menu import TournamentChoiceMenu
 from views.tournament_table import TournamentTable
 from views.tournament_menu import TournamentMenu
 from views.player_form import AddPlayerForm, EditPlayerForm
-from views.tournament_form import AddTournamentForm, LoadTournamentForm
+from views.tournament_form import AddTournamentForm
 from views.player_choice_menu import PlayerChoiceMenu
 from utils.player_manager import pm
 from utils.tournament_manager import tm
 
 
 def main_ctrl():
+    """Renvoie l'utilisateur sur le menu principal."""
     router.navigate(MainMenu().display())
 
 
 def players_ctrl():
+    """Renvoie l'utilisateur sur le menu de gestion des joueurs."""
     router.navigate(PlayerMenu().display())
 
 
+def tournaments_ctrl():
+    """Renvoie l'utilisateur sur le menu de gestion des tournois."""
+    router.navigate(TournamentMenu().display())
+
+
 def quit_ctrl():
+    """Permet de quitter l'application."""
     sys.exit()
 
 
@@ -50,18 +61,17 @@ def players_all_name_ctrl():
 
 def players_edit_ctrl():
     while True:
-        data = EditPlayerForm().display()
+        players = pm.find_all()
+        player_id = PlayerChoiceMenu(players).display()
         try:
-            player = pm.find_by_id(data["id"])
-            player.rank = data["rank"]
+            player = pm.find_by_id(player_id)
+            rank = EditPlayerForm().display()
+            player.rank = rank["rank"]
+            pm.save_item(player.id)
             break
         except KeyError:
             Error("Veuillez saisir un id et un classement valide.").display()
     router.navigate("/players")
-
-
-def tournaments_ctrl():
-    router.navigate(TournamentMenu().display())
 
 
 def tournaments_create_ctrl():
@@ -82,9 +92,10 @@ def tournaments_create_ctrl():
 
 def tournaments_play_ctrl():
     while True:
-        data = LoadTournamentForm().display()
+        tournaments = tm.find_all()
+        tournament_id = TournamentChoiceMenu(tournaments).display()
         try:
-            tournament = tm.find_by_id(data["id"])
+            tournament = tm.find_by_id(tournament_id)
             for nb_rnd in range(1, tournament.number_rounds):
                 rnd = tournament.generate_round(f"Round {nb_rnd}", nb_rnd)
                 for match in rnd.matches:
@@ -92,6 +103,8 @@ def tournaments_play_ctrl():
                     result_p2 = 1 - result_p1
                     match.score_player1 = result_p1
                     match.score_player2 = result_p2
+                tournament.rounds += rnd
+                tm.save_item(tournament.id)
             break
         except KeyError:
             Error("Veuillez saisir un id de tournoi valide.").display()
@@ -101,3 +114,23 @@ def tournaments_play_ctrl():
 def tournaments_all_ctrl():
     TournamentTable(tm.find_all()).display()
     router.navigate("/tournaments")
+
+
+def tournaments_rounds_ctrl():
+    tournaments = tm.find_all()
+    tournament_id = TournamentChoiceMenu(tournaments).display()
+    try:
+        tournament = tm.find_by_id(tournament_id)
+        RoundTable(tournament.rounds)
+    except KeyError:
+        Error("Veuillez saisir un id de tournoi valide.").display()
+
+
+def tournaments_matches_ctrl():
+    tournaments = tm.find_all()
+    tournament_id = TournamentChoiceMenu(tournaments).display()
+    try:
+        tournament = tm.find_by_id(tournament_id)
+        MatchTable(tournament.matches)
+    except KeyError:
+        Error("Veuillez saisir un id de tournoi valide.").display()
