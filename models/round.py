@@ -6,7 +6,7 @@ from .match import Match
 
 
 class Round(BaseModel):
-    """ Modèle représentant un round du tounroi d'échec """
+    """Modèle représentant un round du tournoi d'échec."""
     name: constr(min_length=2, max_length=10)
     start_time: datetime = datetime.today()
     end_time: datetime = None

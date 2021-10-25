@@ -5,14 +5,27 @@ from utils.player_id import PlayerId
 
 
 class Match(BaseModel):
-    """ Modèle représentant un match d'un round du tournoi d'échecs """
+    """Modèle représentant un match d'un round du tournoi d'échecs."""
     id_player1: PlayerId
     id_player2: PlayerId
     score_player1: Score = Score.UNKNOWN
     score_player2: Score = Score.UNKNOWN
 
     @property
+    def winner(self) -> str:
+        """Retourne le résultat du match."""
+        if self.score_player1 == Score.UNKNOWN:
+            return "Match non joué"
+        if self.score_player1 == Score.WIN:
+            return "Joueur 1"
+        if self.score_player1 == Score.LOSE:
+            return "Joueur 2"
+        if self.score_player1 == Score.DRAW:
+            return "Égalité"
+
+    @property
     def played(self) -> bool:
+        """Indique si le match a déjà été joué."""
         return self.score_player1.value + self.score_player2.value == 1.0
 
     def __eq__(self, other: Any) -> bool:
