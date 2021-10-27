@@ -30,7 +30,12 @@ class Tournament(BaseModel):
     @property
     def played_matches(self) -> List[Match]:
         """Retourne uniquement les matchs du tournoi déjà joués."""
-        return [(match for match in rnd.matches if match.played) for rnd in self.rounds]
+        played_matches = []
+        for rnd in self.rounds:
+            for match in rnd.matches:
+                if match.played:
+                    played_matches.append(match)
+        return played_matches
 
     @property
     def matches(self) -> List[Match]:
@@ -89,12 +94,6 @@ class Tournament(BaseModel):
         if len(value) > 35:
             raise ValueError("Le nom ne doit pas dépasser 25 caractères.")
         return value
-
-    # @validator("end_date")
-    # def check_dates_match(cls, value, values):
-    #     if value < values["start_date"]:
-    #         raise ValueError("La date de fin du tournoi doit être supérieure ou égale à la date de début.")
-    #     return value
 
     @validator("players")
     def check_nb_players(cls, value):

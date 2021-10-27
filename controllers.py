@@ -96,14 +96,14 @@ def tournaments_play_ctrl():
         tournament_id = TournamentChoiceMenu(tournaments).display()
         try:
             tournament = tm.find_by_id(tournament_id)
-            for nb_rnd in range(1, tournament.number_rounds):
+            for nb_rnd in range(1, tournament.number_rounds + 1):
                 rnd = tournament.generate_round(f"Round {nb_rnd}", nb_rnd)
                 for match in rnd.matches:
                     result_p1 = ResultMenu(pm.find_by_id(match.id_player1), pm.find_by_id(match.id_player2)).display()
                     result_p2 = 1 - result_p1
                     match.score_player1 = result_p1
                     match.score_player2 = result_p2
-                tournament.rounds += rnd
+                tournament.rounds.append(rnd)
                 tm.save_item(tournament.id)
             break
         except KeyError:

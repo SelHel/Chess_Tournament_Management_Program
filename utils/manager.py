@@ -21,7 +21,7 @@ class Manager:
         self.table.upsert(Document(json.loads(item.json()), doc_id=id))
 
     def create_item(self, *args, **kwargs):
-        """Permet de créer un objet."""
+        """Permet la création d'un objet et fait une sauvegarde du nouvel objet."""
         item = self.item_type(*args, **kwargs)
         self.items[item.id] = item
         self.max_id = max(item.id, self.max_id)

@@ -26,7 +26,7 @@ class Match(BaseModel):
     @property
     def played(self) -> bool:
         """Indique si le match a déjà été joué."""
-        return self.score_player1.value + self.score_player2.value == 1.0
+        return self.score_player1 + self.score_player2 == 1.0
 
     def __eq__(self, other: Any) -> bool:
         if isinstance(other, Match):

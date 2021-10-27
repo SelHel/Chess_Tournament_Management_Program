@@ -230,3 +230,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # Directory and file to ignore
+db.json
+scraper.command
+test.py
