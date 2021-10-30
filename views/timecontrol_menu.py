@@ -7,4 +7,4 @@ class TimeControlMenu(EnumMenu):
     def __init__(self):
         super().__init__(
             "Sélectionnez le type de contrôle du temps :",
-            TimeControl)
+            TimeControl, start=0)

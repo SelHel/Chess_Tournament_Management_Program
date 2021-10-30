@@ -6,7 +6,7 @@ from typing import Any
 class Name(str):
     def __new__(cls, value: str):
         """Vérifie si le nom entré par l'utilisateur est valide."""
-        if not re.match("^[a-zA-Z- 'éèïû]{2,25}$", value):
+        if not re.match("^[a-zA-Z- 'éèïû]{2,25}$", value) and value != "0":
             raise ValueError("Le nom n'est pas valide.")
         return super().__new__(cls, value)
 

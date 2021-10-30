@@ -40,14 +40,15 @@ def quit_ctrl():
 
 def players_create_ctrl():
     data = AddPlayerForm().display()
-    data["birth_date"] = date(year=data['bd_year'],
-                              month=data['bd_month'],
-                              day=data['bd_day']).isoformat()
-    data["id"] = pm.max_id + 1
-    try:
-        pm.create_item(**data)
-    except Exception as e:
-        Error(f"Impossible de créer le joueur: {str(e)}").display()
+    if data:
+        data["birth_date"] = date(year=data['bd_year'],
+                                  month=data['bd_month'],
+                                  day=data['bd_day']).isoformat()
+        data["id"] = pm.max_id + 1
+        try:
+            pm.create_item(**data)
+        except Exception as e:
+            Error(f"Impossible de créer le joueur: {str(e)}").display()
     router.navigate("/players")
 
 
@@ -63,6 +64,8 @@ def players_edit_ctrl():
     while True:
         players = pm.find_all()
         player_id = PlayerChoiceMenu(players).display()
+        if player_id == 0:
+            return router.navigate("/players")
         try:
             player = pm.find_by_id(player_id)
             rank = EditPlayerForm().display()
@@ -76,23 +79,27 @@ def players_edit_ctrl():
 
 def tournaments_create_ctrl():
     data = AddTournamentForm().display()
-    data["id"] = tm.max_id + 1
-    data["players"] = []
-    players = pm.find_all()
-    for i in range(data["nb_players"]):
-        player_id = PlayerChoiceMenu(players).display()
-        data["players"].append(player_id)
-        players = [player for player in players if player_id != player.id]
-    try:
-        tm.create_item(**data)
-    except Exception as e:
-        Error(f"Impossible de créer le tournoi: {str(e)}").display()
+    if data:
+        data["id"] = tm.max_id + 1
+        data["players"] = []
+        players = pm.find_all()
+        for i in range(data["nb_players"]):
+            player_id = PlayerChoiceMenu(players).display()
+            if player_id == 0:
+                return router.navigate("/tournaments")
+            data["players"].append(player_id)
+            players = [player for player in players if player_id != player.id]
+        try:
+            tm.create_item(**data)
+        except Exception as e:
+            Error(f"Impossible de créer le tournoi: {str(e)}").display()
     router.navigate("/tournaments")
 
 
 def tournaments_play_ctrl():
     while True:
-        tournaments = tm.find_all()
+        all_tournaments = tm.find_all()
+        tournaments = [i for i in all_tournaments if not i.is_over]
         tournament_id = TournamentChoiceMenu(tournaments).display()
         try:
             tournament = tm.find_by_id(tournament_id)

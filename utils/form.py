@@ -10,10 +10,13 @@ class Form(View):
         super().__init__(title)
 
     def display(self):
-        """Permet d'afficher un formulaire et retourne les données entrées par l'utilisateur."""
+        """Permet d'afficher un formulaire, de stocker et de retourner les données entrées par l'utilisateur."""
         data = {}
         super().display()
         for field, description, field_type in self.fields:
+            print("----------")
+            print("0 - Retour en arrière.")
+            print("----------")
             while True:
                 try:
                     if isinstance(field_type(), EnumMenu):
@@ -26,4 +29,6 @@ class Form(View):
                     break
                 except ValueError:
                     pass
+            if data[field] in [0, "0"]:
+                return None
         return data

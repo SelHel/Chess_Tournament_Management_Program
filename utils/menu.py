@@ -4,9 +4,10 @@ from utils.view import View
 
 class Menu(View):
     """Permet de construire un menu."""
-    def __init__(self, title: str, choices: List[Tuple[str, str]], content=""):
+    def __init__(self, title: str, choices: List[Tuple[str, str]], content="", start=1):
+        self.start = start
         self.paths = [path for _, path in choices]
-        content = content + "\n" + "\n".join([f"{i} - {choice}" for i, (choice, _) in enumerate(choices, start=1)])
+        content = content + "\n" + "\n".join([f"{i} - {choice}" for i, (choice, _) in enumerate(choices, start=start)])
         super().__init__(title, content, blocking=True)
 
     def display(self):
@@ -14,7 +15,7 @@ class Menu(View):
         while True:
             try:
                 choice = int(super().display())
-                if 0 < choice <= len(self.paths):
-                    return self.paths[choice - 1]
+                if self.start <= choice < len(self.paths) + self.start:
+                    return self.paths[choice - self.start]
             except ValueError:
                 pass

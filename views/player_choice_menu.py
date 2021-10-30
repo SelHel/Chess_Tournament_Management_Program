@@ -8,4 +8,6 @@ class PlayerChoiceMenu(Menu):
     def __init__(self, players: List[Player]):
         super().__init__(
             "Sélectionnez un joueur dans la liste :",
-            [(f"{player.first_name} {player.last_name}", player.id) for player in players])
+            [("Retour en arrière.", 0)] +
+            [(f"{player.first_name} {player.last_name}", player.id) for player in players],
+            start=0)
