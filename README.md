@@ -6,6 +6,7 @@
 
 Ce programme est une application hors ligne qui permet aux utilisateurs de gérer des tournois d'échecs.
 L'utilisateur peut suivre et mettre à jour les résultats d'un tournoi au fur et à mesure.<br/>
+La génération des paires de joueurs pour les matchs est gérée par un algorithme basé sur le système de tounrois "suisse".<br/>
 Il peut également générer des rapports et sauvegarder ou charger un tournoi à tout moment grâce à une base de donnée.
 
 ## Prérequis

@@ -8,4 +8,6 @@ class TournamentChoiceMenu(Menu):
     def __init__(self, tournaments: List[Tournament]):
         super().__init__(
             "Sélectionnez un tournoi dans la liste :",
-            [(f"{tournament.name}", tournament.id) for tournament in tournaments])
+            [("Retour en arrière", 0)] +
+            [(f"{tournament.name}", tournament.id) for tournament in tournaments],
+            start=0)

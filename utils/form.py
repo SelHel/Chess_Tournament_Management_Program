@@ -14,9 +14,9 @@ class Form(View):
         data = {}
         super().display()
         for field, description, field_type in self.fields:
-            print("----------")
+            print("----------------------")
             print("0 - Retour en arrière.")
-            print("----------")
+            print("----------------------")
             while True:
                 try:
                     if isinstance(field_type(), EnumMenu):

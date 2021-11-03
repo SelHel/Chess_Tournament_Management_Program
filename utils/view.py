@@ -2,7 +2,7 @@ import os
 
 
 class View:
-    """Permet de construire une vue et de l'afficher à l'utilisateur."""
+    """Définition d'une vue."""
     def __init__(self, title: str, content: str = "", blocking: bool = False):
         self.title = title
         self.content = content

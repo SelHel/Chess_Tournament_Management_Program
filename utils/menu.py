@@ -11,7 +11,7 @@ class Menu(View):
         super().__init__(title, content, blocking=True)
 
     def display(self):
-        """Permet d'afficher un menu et retourne le choix effectué par l'utilisateur."""
+        """Méthode permettant d'afficher un menu et retourne le choix effectué par l'utilisateur."""
         while True:
             try:
                 choice = int(super().display())

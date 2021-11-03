@@ -231,5 +231,6 @@ $RECYCLE.BIN/
 
 # Directory and file to ignore
 db.json
-scraper.command
+application.command
 test.py
+Presentation_P4.pptx

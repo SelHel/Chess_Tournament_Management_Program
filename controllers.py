@@ -101,6 +101,8 @@ def tournaments_play_ctrl():
         all_tournaments = tm.find_all()
         tournaments = [i for i in all_tournaments if not i.is_over]
         tournament_id = TournamentChoiceMenu(tournaments).display()
+        if tournament_id == 0:
+            return router.navigate("/tournaments")
         try:
             tournament = tm.find_by_id(tournament_id)
             for nb_rnd in range(1, tournament.number_rounds + 1):
@@ -126,6 +128,8 @@ def tournaments_all_ctrl():
 def tournaments_rounds_ctrl():
     tournaments = tm.find_all()
     tournament_id = TournamentChoiceMenu(tournaments).display()
+    if tournament_id == 0:
+        return router.navigate("/tournaments")
     try:
         tournament = tm.find_by_id(tournament_id)
         RoundTable(tournament.rounds)
@@ -136,6 +140,8 @@ def tournaments_rounds_ctrl():
 def tournaments_matches_ctrl():
     tournaments = tm.find_all()
     tournament_id = TournamentChoiceMenu(tournaments).display()
+    if tournament_id == 0:
+        return router.navigate("/tournaments")
     try:
         tournament = tm.find_by_id(tournament_id)
         MatchTable(tournament.matches)
