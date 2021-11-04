@@ -10,5 +10,6 @@ class MatchTable(Table):
         super().__init__("Liste des matchs du tournoi", matches, [
             ('Joueur 1', 20, lambda x: str(pm.find_by_id(x.id_player1))),
             ('Joueur 2', 20, lambda x: str(pm.find_by_id(x.id_player2))),
-            ('Gagnant', 18, lambda x: x.winner)
+            ('Score Joueur 1', 18, lambda x: x.score_player1),
+            ('Score Joueur 2', 18, lambda x: x.score_player2)
             ], [("Retour", "/tournaments")])

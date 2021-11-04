@@ -149,7 +149,9 @@ def tournaments_matches_ctrl():
         return router.navigate("/tournaments")
     try:
         tournament = tm.find_by_id(tournament_id)
-        MatchTable(tournament.matches).display()
+        for round in tournament.rounds:
+            print(round.name)
+            MatchTable(round.matches).display()
         router.navigate("/tournaments")
     except KeyError:
         Error("Veuillez saisir un id de tournoi valide.").display()

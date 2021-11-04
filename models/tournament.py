@@ -67,7 +67,8 @@ class Tournament(BaseModel):
         """Génère et retourne le premier round du tournoi."""
         players = sorted([pm.find_by_id(player_id) for player_id in self.players],
                          key=lambda x: (x.rank, x.last_name, x.first_name))
-        rnd.matches += [Match(id_player1=a.id, id_player2=b.id) for a, b in zip(players[4:], players[:4])]
+        half = int(len(players)/2)
+        rnd.matches += [Match(id_player1=a.id, id_player2=b.id) for a, b in zip(players[half:], players[:half])]
         return rnd
 
     def generate_next_round(self, rnd):

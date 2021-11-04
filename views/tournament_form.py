@@ -11,6 +11,6 @@ class AddTournamentForm(Form):
             [("name", "Nom du tournoi", str),
              ("location", "Lieu du tournoi", str),
              ("description", "Description du tournoi", str),
-             ("number_rounds", "Nombre de tours", PositiveInt),
+             ("number_rounds", "Nombre de rounds", PositiveInt),
              ("nb_players", "Saisir le nombre de joueurs", PositiveInt),
              ("time_control", "Contrôle du temps", TimeControlMenu)])

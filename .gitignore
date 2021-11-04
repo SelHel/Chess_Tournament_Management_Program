@@ -230,7 +230,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # Directory and file to ignore
-db.json
 application.command
 test.py
 Presentation_P4.pptx
