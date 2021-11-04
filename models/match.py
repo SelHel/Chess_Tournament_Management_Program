@@ -14,7 +14,7 @@ class Match(BaseModel):
     @property
     def winner(self) -> str:
         """
-        Utilisation du décorateur @property 
+        Utilisation du décorateur @property pour
         Retourne le résultat du match.
         """
         if self.score_player1 == Score.UNKNOWN:
