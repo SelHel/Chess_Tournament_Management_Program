@@ -1,5 +1,5 @@
 import sys
-from datetime import date
+from datetime import date, datetime
 from views.match_table import MatchTable
 from views.result_menu import ResultMenu
 from utils.router import router
@@ -108,12 +108,16 @@ def tournaments_play_ctrl():
             for nb_rnd in range(1, tournament.number_rounds + 1):
                 rnd = tournament.generate_round(f"Round {nb_rnd}", nb_rnd)
                 for match in rnd.matches:
-                    result_p1 = ResultMenu(pm.find_by_id(match.id_player1), pm.find_by_id(match.id_player2)).display()
+                    result_p1 = ResultMenu(pm.find_by_id(match.id_player1),
+                                           pm.find_by_id(match.id_player2), rnd).display()
                     result_p2 = 1 - result_p1
                     match.score_player1 = result_p1
                     match.score_player2 = result_p2
+                rnd.end_time = datetime.now()
                 tournament.rounds.append(rnd)
                 tm.save_item(tournament.id)
+            tournament.end_date = date.today()
+            tm.save_item(tournament.id)
             break
         except KeyError:
             Error("Veuillez saisir un id de tournoi valide.").display()
@@ -132,7 +136,8 @@ def tournaments_rounds_ctrl():
         return router.navigate("/tournaments")
     try:
         tournament = tm.find_by_id(tournament_id)
-        RoundTable(tournament.rounds)
+        RoundTable(tournament.rounds).display()
+        router.navigate("/tournaments")
     except KeyError:
         Error("Veuillez saisir un id de tournoi valide.").display()
 
@@ -144,6 +149,7 @@ def tournaments_matches_ctrl():
         return router.navigate("/tournaments")
     try:
         tournament = tm.find_by_id(tournament_id)
-        MatchTable(tournament.matches)
+        MatchTable(tournament.matches).display()
+        router.navigate("/tournaments")
     except KeyError:
         Error("Veuillez saisir un id de tournoi valide.").display()

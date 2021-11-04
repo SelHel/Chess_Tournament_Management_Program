@@ -1,5 +1,5 @@
 from typing import List
-from datetime import datetime
+from datetime import date
 from collections import Counter
 from pydantic import BaseModel, PositiveInt, validator
 from models.match import Match
@@ -14,8 +14,8 @@ class Tournament(BaseModel):
     id: PositiveInt
     name: str
     location: str
-    start_date: datetime = datetime.today()
-    end_date: datetime = None
+    start_date: date = date.today()
+    end_date: date = None
     number_rounds: PositiveInt
     rounds: List[Round] = []
     players: List[PlayerId] = []
