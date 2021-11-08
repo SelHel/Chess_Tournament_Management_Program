@@ -17,19 +17,21 @@ from views.player_choice_menu import PlayerChoiceMenu
 from utils.player_manager import pm
 from utils.tournament_manager import tm
 
+"""Les contrôleurs garantissent que les commandes utilisateurs soient exécutées correctement."""
+
 
 def main_ctrl():
-    """Renvoie l'utilisateur sur le menu principal."""
+    """Renvoie l'utilisateur au menu principal."""
     router.navigate(MainMenu().display())
 
 
 def players_ctrl():
-    """Renvoie l'utilisateur sur le menu de gestion des joueurs."""
+    """Renvoie l'utilisateur au menu de gestion des joueurs."""
     router.navigate(PlayerMenu().display())
 
 
 def tournaments_ctrl():
-    """Renvoie l'utilisateur sur le menu de gestion des tournois."""
+    """Renvoie l'utilisateur au menu de gestion des tournois."""
     router.navigate(TournamentMenu().display())
 
 
@@ -39,6 +41,11 @@ def quit_ctrl():
 
 
 def players_create_ctrl():
+    """
+    Affiche le formulaire d'ajout d'un joueur.
+    Récupère les données entrées par l'utilisateur puis essaie de créé l'objet ou lève une erreur.
+    Une fois le formulaire complété renvoie l'utilisateur au menu de gestion des joueurs.
+    """
     data = AddPlayerForm().display()
     if data:
         data["birth_date"] = date(year=data['bd_year'],
@@ -53,14 +60,24 @@ def players_create_ctrl():
 
 
 def players_all_rank_ctrl():
+    """Affiche la table des joueurs trier par classement."""
     router.navigate(PlayerTable(pm.find_all(), sorting="by-rank").display())
 
 
 def players_all_name_ctrl():
+    """Affiche la table des joueurs trier par noms."""
     router.navigate(PlayerTable(pm.find_all(), sorting="by-name").display())
 
 
 def players_edit_ctrl():
+    """
+    Affiche le menu permettant d'effectuer un choix dans la liste de tous les joueurs.
+    Récupère le choix de l'utilisateur.
+    Si choix = 0 renvoie l'utilisateur au menu de gestion des joueurs.
+    Sinon renvoie l'utilisateur au formulaire de modification du classement d'un joueur.
+    Récupère le nouveau classement du joueur puis sauvegarde l'objet.
+    Une fois le formulaire complété renvoie l'utilisateur au menu de gestion des joueurs.
+    """
     while True:
         players = pm.find_all()
         player_id = PlayerChoiceMenu(players).display()
@@ -78,6 +95,11 @@ def players_edit_ctrl():
 
 
 def tournaments_create_ctrl():
+    """
+    Affiche le formulaire d'ajout d'un tournoi.
+    Récupère les données entrées par l'utilisateur puis essaie de créé l'objet ou lève une erreur.
+    Une fois le formulaire complété renvoie l'utilisateur au menu de gestion des tournois.
+    """
     data = AddTournamentForm().display()
     if data:
         data["id"] = tm.max_id + 1
@@ -97,6 +119,13 @@ def tournaments_create_ctrl():
 
 
 def tournaments_play_ctrl():
+    """
+    Affiche le menu permettant d'effectuer un choix dans la liste des tournois non terminés.
+    Si choix = 0 renvoie l'utilisateur au menu de gestion des tournois.
+    Sinon chaque match de chaque round du tournoi est joué et le menu permettant d'effectuer le choix du résultat d'un match
+    est afficher à chaque fin de match.
+    Une fois le tournoi terminé il est sauvegardé puis l'utilisateur est renvoyé au menu de gestion des tournois.
+    """
     while True:
         all_tournaments = tm.find_all()
         tournaments = [i for i in all_tournaments if not i.is_over]
@@ -125,11 +154,21 @@ def tournaments_play_ctrl():
 
 
 def tournaments_all_ctrl():
+    """
+    Affiche la table des tournois.
+    Puis renvoie l'utilisateur au menu de gestion des tournois.
+    """
     TournamentTable(tm.find_all()).display()
     router.navigate("/tournaments")
 
 
 def tournaments_rounds_ctrl():
+    """
+    Affiche le menu permettant d'effectuer un choix dans la liste de tous les tournois.
+    Si choix = 0 renvoie l'utilisateur au menu de gestion des tournois.
+    Sinon affiche la table des rounds du tournoi sélectionné.
+    Puis renvoie l'utilisateur au menu de gestion des tournois.
+    """
     tournaments = tm.find_all()
     tournament_id = TournamentChoiceMenu(tournaments).display()
     if tournament_id == 0:
@@ -143,6 +182,12 @@ def tournaments_rounds_ctrl():
 
 
 def tournaments_matches_ctrl():
+    """
+    Affiche le menu permettant d'effectuer un choix dans la liste de tous les tournois.
+    Si choix = 0 renvoie l'utilisateur au menu de gestion des tournois.
+    Sinon affiche la table des matchs de tous les rounds du tournoi sélectionné.
+    Puis renvoie l'utilisateur au menu de gestion des tournois.
+    """
     tournaments = tm.find_all()
     tournament_id = TournamentChoiceMenu(tournaments).display()
     if tournament_id == 0:

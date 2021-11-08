@@ -4,13 +4,29 @@ from utils.view import View
 
 
 class Form(View):
-    """Permet de construire et d'afficher un formulaire."""
+    """Classe représentant un formulaire."""
     def __init__(self, title: str, fields: List[Tuple[str, str, Any]]):
+        """
+        Construit tous les attributs nécessaires à l'objet Form.
+
+        Paramètres
+        ----------
+        title : str
+            Titre du formulaire
+        fields : List[Tuple[str, str, Any]
+            Champs du formulaire
+        """
         self.fields = fields
         super().__init__(title)
 
     def display(self):
-        """Permet d'afficher un formulaire, de stocker et de retourner les données entrées par l'utilisateur."""
+        """
+        Méthode permettant d'afficher un formulaire.
+
+        Retour
+        ------
+        Retourne les données du formulaire entrées par l'utilisateur.
+        """
         data = {}
         super().display()
         for field, description, field_type in self.fields:

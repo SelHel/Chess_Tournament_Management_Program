@@ -4,8 +4,9 @@ from utils.custom_types import Name, Gender
 
 
 class AddPlayerForm(Form):
-    """Formulaire permettant la création d'un joueur."""
+    """Classe représentant le formulaire d'ajout d'un joueur."""
     def __init__(self):
+        """Permet de construire le formulaire d'ajout d'un joueur."""
         super().__init__(
             "Formulaire d'ajout d'un joueur",
             [("last_name", "Nom de famille du joueur", Name),
@@ -18,8 +19,9 @@ class AddPlayerForm(Form):
 
 
 class EditPlayerForm(Form):
-    """Formulaire permettant la modification du classement d'un joueur."""
+    """Classe représentant le formulaire pour la modification du classement d'un joueur."""
     def __init__(self):
+        """Permet de construire le formulaire de modification du classement d'un joueur."""
         super().__init__(
             "Formulaire de mise à jour du classement d'un joueur",
             [("rank", "Saisissez le nouveau classement du joueur sélectionné ", PositiveInt)])

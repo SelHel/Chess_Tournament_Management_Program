@@ -2,7 +2,9 @@ from utils.menu import Menu
 
 
 class TournamentMenu(Menu):
+    """Classe représentant le menu de gestion des tournois."""
     def __init__(self):
+        """Permet de construire le menu de gestion des tournois."""
         super().__init__(
             "Menu de gestion des tournois",
             [("Créer un nouveau tournoi", "/tournaments/create"),

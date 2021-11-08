@@ -5,8 +5,16 @@ from utils.player_manager import pm
 
 
 class MatchTable(Table):
-    """Permet de lister tous les matchs d'un tournoi dans un tableau."""
+    """Classe représentant la table de matchs."""
     def __init__(self, matches: List[Match]):
+        """
+        Permet de construire un tableau des matchs.
+
+        Paramètres
+        ----------
+        matches : List[Match]
+            Liste des matchs de la table
+        """
         super().__init__("Liste des matchs du tournoi", matches, [
             ('Joueur 1', 20, lambda x: str(pm.find_by_id(x.id_player1))),
             ('Joueur 2', 20, lambda x: str(pm.find_by_id(x.id_player2))),

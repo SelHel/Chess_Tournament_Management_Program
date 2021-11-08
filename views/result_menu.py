@@ -4,8 +4,20 @@ from models.round import Round
 
 
 class ResultMenu(Menu):
-    """Menu qui permet d'effectuer le choix du résultat d'un match."""
+    """Classe représentant le menu permettant d'effectuer le choix du résultat d'un match."""
     def __init__(self, player1: Player, player2: Player, round: Round):
+        """
+        Permet de construire le menu de choix du résultat d'un match.
+
+        Paramètres
+        ----------
+        player1: Player
+            Liste des joueurs
+        player2: Player
+
+        round: Round
+        
+        """
         super().__init__(
             f"{round.name}\n---------\nSélectionnez le résultat du match :",
             [(f"{player1.first_name} {player1.last_name} a gagné.", 1.0),

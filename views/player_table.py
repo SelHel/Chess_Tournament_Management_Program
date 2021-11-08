@@ -4,8 +4,18 @@ from models.player import Player
 
 
 class PlayerTable(Table):
-    """Permet de lister les joueurs dans un tableau."""
+    """Classe représentant la table de joueurs."""
     def __init__(self, players: List[Player], sorting: str):
+        """
+        Permet de construire la table des joueurs.
+
+        Paramètres
+        ----------
+        players : List[Player]
+            Liste des joueurs de la table
+        sorting : str
+            type de tri des joueurs
+        """
         inv_sorting = "by-name" if sorting == "by-rank" else "by-rank"
         super().__init__("Liste des joueurs", sorted(
             players, key=lambda x: (

@@ -15,6 +15,8 @@ from controllers import (
     tournaments_matches_ctrl
     )
 
+"""Permet la navigation entre les différents menus."""
+
 router.add_route("/", main_ctrl)
 router.add_route("/quit", quit_ctrl)
 router.add_route("/players", players_ctrl)

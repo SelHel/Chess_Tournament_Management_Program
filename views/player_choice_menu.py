@@ -4,8 +4,16 @@ from utils.menu import Menu
 
 
 class PlayerChoiceMenu(Menu):
-    """Menu qui permet d'effectuer un choix dans la liste de tous les joueurs."""
+    """Classe représentant le menu permettant d'effectuer un choix dans la liste de tous les joueurs."""
     def __init__(self, players: List[Player]):
+        """
+        Permet de construire le menu de choix des joueurs.
+
+        Paramètres
+        ----------
+        players : List[Player]
+            Liste des joueurs
+        """
         super().__init__(
             "Sélectionnez un joueur dans la liste :",
             [("Retour en arrière", 0)] +

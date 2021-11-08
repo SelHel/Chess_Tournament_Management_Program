@@ -4,8 +4,16 @@ from models.tournament import Tournament
 
 
 class TournamentTable(Table):
-    """Permet de lister tous les tournois dans un tableau."""
+    """Classe représentant la table de tournois."""
     def __init__(self, tournaments: List[Tournament]):
+        """
+        Permet de construire la table des tournois.
+
+        Paramètres
+        ----------
+        tournaments : List[Tournament]
+            Liste des tournois de la table
+        """
         super().__init__("Liste des tournois", sorted(
             tournaments, key=lambda x: ((x.id))
             ), [

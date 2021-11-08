@@ -4,8 +4,9 @@ from utils.form import Form
 
 
 class AddTournamentForm(Form):
-    """"Formulaire permettant la création d'un tournoi."""
+    """Classe représentant le formulaire d'ajout d'un tournoi."""
     def __init__(self):
+        """Permet de construire le formulaire d'ajout d'un tournoi."""
         super().__init__(
             "Formulaire d'ajout d'un nouveau tournoi",
             [("name", "Nom du tournoi", str),

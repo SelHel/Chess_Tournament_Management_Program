@@ -3,7 +3,7 @@ from .menu import Menu
 
 
 class Table(Menu):
-    """Permet de générer un tableau."""
+    """Classe représentant une table."""
     def __init__(
         self,
         title: str,
@@ -11,6 +11,20 @@ class Table(Menu):
         cols: List[Tuple[str, int, Callable[[Any], Any]]],
         choices: List[Tuple[str, str]] = []
     ):
+        """
+        Construit tous les attributs nécessaires à l'objet Table.
+
+        Paramètres
+        ----------
+        title : str
+            Titre de la table
+        items : List[Any]
+            Liste des éléments de la table
+        cols : List[Tuple[str, int, Callable[[Any], Any]]]
+            Liste des colonnes de la table
+        choices: List[Tuple[str, str]]
+            Liste des choix de la table 
+        """
         self.cols = cols
         super().__init__(title, choices, self._gen_content(items))
 
