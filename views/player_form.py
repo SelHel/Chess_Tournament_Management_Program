@@ -20,8 +20,8 @@ class AddPlayerForm(Form):
 
 class EditPlayerForm(Form):
     """Classe représentant le formulaire permettant la modification du classement d'un joueur."""
-    def __init__(self):
+    def __init__(self, player_str):
         """Permet de construire le formulaire de modification du classement d'un joueur."""
         super().__init__(
             "Formulaire de mise à jour du classement d'un joueur",
-            [("rank", "Saisissez le nouveau classement du joueur sélectionné ", PositiveInt)])
+        [("rank", player_str + "\nSaisissez le nouveau classement du joueur sélectionné ", PositiveInt)])

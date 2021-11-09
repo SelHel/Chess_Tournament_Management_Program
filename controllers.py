@@ -81,10 +81,13 @@ def players_edit_ctrl():
     while True:
         players = pm.find_all()
         player_id = PlayerChoiceMenu(players).display()
+        if player_id == 0:
+            return router.navigate("/players")
         try:
             player = pm.find_by_id(player_id)
-            rank = EditPlayerForm().display()
-            if rank == 0:
+            player_str = f"Joueur {player.id}: {player.first_name} {player.last_name} Classement: {player.rank}"
+            rank = EditPlayerForm(player_str).display()  # If the user chooses "retourner en arriere", rank will be None
+            if not rank:
                 return router.navigate("/players")
             player.rank = rank["rank"]
             pm.save_item(player.id)
