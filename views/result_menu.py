@@ -12,11 +12,11 @@ class ResultMenu(Menu):
         Paramètres
         ----------
         player1: Player
-            Liste des joueurs
+            Le premier joueur du match
         player2: Player
-
+            Le deuxième joueur du match
         round: Round
-        
+            Le round du tournoi
         """
         super().__init__(
             f"{round.name}\n---------\nSélectionnez le résultat du match :",

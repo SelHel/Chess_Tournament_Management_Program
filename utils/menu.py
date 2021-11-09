@@ -11,18 +11,18 @@ class Menu(View):
         Paramètres
         ----------
         title : str
-            Titre du menu
+            Le titre du menu
         choices : List[Tuple[str, str]]
-            Liste des choix du menu
+            La liste des choix du menu
         content : str, facultatif
-            Contenu du menu
+            Le contenu du menu
         start : int
-            Chiffre de commencement des choix du menu
+            Le chiffre de commencement des choix du menu
         """
         self.start = start
         self.paths = [path for _, path in choices]
         content = content + "\n" + "\n".join([f"{i} - {choice}" for i, (choice, _) in enumerate(choices, start=start)])
-        super().__init__(title, content, blocking=True)
+        super().__init__(title, content, with_input=True)
 
     def display(self):
         """

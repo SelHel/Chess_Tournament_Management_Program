@@ -12,7 +12,7 @@ class PlayerChoiceMenu(Menu):
         Paramètres
         ----------
         players : List[Player]
-            Liste des joueurs
+            La liste des joueurs
         """
         super().__init__(
             "Sélectionnez un joueur dans la liste :",

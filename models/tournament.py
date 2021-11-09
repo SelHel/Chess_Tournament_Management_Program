@@ -13,7 +13,7 @@ class Tournament(BaseModel):
     """
     Modèle représentant un tournoi d'échec.
 
-    champs obligatoires
+    Champs obligatoires
     -------------------
     id : PositiveInt
         L'id du tournoi
@@ -51,11 +51,12 @@ class Tournament(BaseModel):
     def is_over(self):
         """
         Utilisation du décorateur @property pour accéder en tant que propriété à l'état d'un tournoi.
-        La méthode is_over permet de savoir si un tounroi est terminé en vérifiant si celui-ci possède une date de fin.
+        La méthode is_over permet de savoir si un tournoi est terminé en vérifiant si la date de fin est définie.
 
         Retour
         ------
-        Retourne la date de fin du tournoi si celle-ci n'est pas égale à None.
+        Retourne True si la date de fin du tournoi n'est pas None
+        sinon retourne False.
         """
         return self.end_date is not None
 
@@ -223,7 +224,7 @@ class Tournament(BaseModel):
         cls : UserModel classe
             La classe Tournament
         value : la valeur du champ à valider
-            champs location et name
+            Les champs location et name
 
         Retour
         ------
@@ -245,7 +246,7 @@ class Tournament(BaseModel):
         cls : UserModel classe
             La classe Tournament
         value : la valeur du champ à valider
-            champs players
+            Le champs players
 
         Retour
         ------
@@ -268,7 +269,7 @@ class Tournament(BaseModel):
         cls : UserModel classe
             La classe Tournament
         value : la valeur du champ à valider
-            champs players
+            Le champs players
 
         Retour
         ------
@@ -294,7 +295,7 @@ class Tournament(BaseModel):
         cls : UserModel classe
             La classe Tournament
         value : la valeur du champ à valider
-            champs description
+            Le champs description
 
         Retour
         ------

@@ -12,15 +12,15 @@ class Player(BaseModel):
     id: Positiveint
         L'id du joueur
     last_name : Name
-        Nom de famille du joueur
+        Le nom de famille du joueur
     first_name : Name
-        Prénom du joueur
+        Le prénom du joueur
     birth_date : date
-        Date de naissance du joueur
+        La date de naissance du joueur
     gender : Gender
-        Genre du joueur
+        Le genre du joueur
     rank : PositiveInt
-        Classement du joueur
+        Le classement du joueur
     """
     id: PositiveInt
     last_name: Name
@@ -29,7 +29,7 @@ class Player(BaseModel):
     gender: Gender
     rank: PositiveInt
 
-    def __str__(self) -> str:
+    def __str__(self) -> str: 
         """
         Méthode spéciale qui permet la représentation en chaîne de caractères de l'objet Player.
 
@@ -51,7 +51,7 @@ class Player(BaseModel):
         cls : UserModel classe
             La classe Player
         value : la valeur du champ à valider
-            champs birth_date
+            Le champs birth_date
 
         Retour
         ------

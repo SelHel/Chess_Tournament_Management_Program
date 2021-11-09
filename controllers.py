@@ -73,19 +73,19 @@ def players_edit_ctrl():
     """
     Affiche le menu permettant d'effectuer un choix dans la liste de tous les joueurs.
     Récupère le choix de l'utilisateur.
+    Renvoie l'utilisateur au formulaire de modification du classement d'un joueur.
     Si choix = 0 renvoie l'utilisateur au menu de gestion des joueurs.
-    Sinon renvoie l'utilisateur au formulaire de modification du classement d'un joueur.
-    Récupère le nouveau classement du joueur puis sauvegarde l'objet.
+    Sinon récupère le nouveau classement du joueur puis effectue sauvegarde.
     Une fois le formulaire complété renvoie l'utilisateur au menu de gestion des joueurs.
     """
     while True:
         players = pm.find_all()
         player_id = PlayerChoiceMenu(players).display()
-        if player_id == 0:
-            return router.navigate("/players")
         try:
             player = pm.find_by_id(player_id)
             rank = EditPlayerForm().display()
+            if rank == 0:
+                return router.navigate("/players")
             player.rank = rank["rank"]
             pm.save_item(player.id)
             break

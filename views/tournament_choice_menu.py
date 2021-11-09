@@ -12,7 +12,7 @@ class TournamentChoiceMenu(Menu):
         Paramètres
         ----------
         tournaments : List[Tournament]
-            Liste des tournois
+            La liste des tournois
         """
         super().__init__(
             "Sélectionnez un tournoi dans la liste :",

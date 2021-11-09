@@ -12,9 +12,9 @@ class PlayerTable(Table):
         Paramètres
         ----------
         players : List[Player]
-            Liste des joueurs de la table
+            La liste des joueurs de la table
         sorting : str
-            type de tri des joueurs
+            Le type de tri des joueurs
         """
         inv_sorting = "by-name" if sorting == "by-rank" else "by-rank"
         super().__init__("Liste des joueurs", sorted(
@@ -23,8 +23,8 @@ class PlayerTable(Table):
                 else (x.last_name, x.first_name, x.rank))
             ), [
                 ("#", 3, lambda x: x.id),
-                ("Nom", 15, lambda x: x.last_name),
-                ("Prénom", 15, lambda x: x.first_name),
+                ("Nom", 20, lambda x: x.last_name),
+                ("Prénom", 20, lambda x: x.first_name),
                 ("Date de naissance", 20, lambda x: x.birth_date.strftime("%d/%m/%Y")),
                 ("Sexe", 10, lambda x: x.gender.name),
                 ("Rang", 5, lambda x: x.rank)

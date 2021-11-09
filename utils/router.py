@@ -2,9 +2,13 @@ from typing import Callable
 
 
 class Router:
-    """Classe représentant un routeur."""
+    """Classe représentant un routeur qui permet de naviguer entre les menus du programme."""
     def __init__(self):
-        """Construit le routeur."""
+        """
+        Construit les routes.
+        Chaque route représente un tuple qui associe une adresse à une fonction.
+        exemple : ("/players/list/by-rank", players_all_rank_ctrl)
+        """
         self.routes = []
 
     def navigate(self, path: str):
@@ -14,7 +18,7 @@ class Router:
         Paramètres
         ----------
         path : str
-            Chemin du routeur
+            Adresse de destination
         """
         if path is None:
             return
@@ -29,9 +33,9 @@ class Router:
         Paramètres
         ----------
         path : str
-            Chemin du routeur
+            Adresse de destination
         controller : Callable
-            Contrôleur du routeur
+            Contrôleur (la fonction associée à l'adresse)
         """
         self.routes.append((path, controller))
 

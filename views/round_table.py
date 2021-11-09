@@ -12,10 +12,10 @@ class RoundTable(Table):
         Paramètres
         ----------
         rounds: List[Round]
-            Liste des rounds de la table
+            La liste des rounds de la table
         """
-        super().__init__("Liste des tours du tournoi", rounds, [
-                ('Nom', 20, lambda x: x.name),
-                ('Date de début', 18, lambda x: x.start_time),
-                ('Date de fin', 20, lambda x: x.end_time)
+        super().__init__("Liste des rounds du tournoi", rounds, [
+                ('Nom', 10, lambda x: x.name),
+                ('Date de début', 40, lambda x: x.start_time),
+                ('Date de fin', 40, lambda x: x.end_time)
             ], [("Retour", "/tournaments")])

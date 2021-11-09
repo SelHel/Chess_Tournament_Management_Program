@@ -2,6 +2,8 @@ import re
 from enum import Enum
 from typing import Any
 
+"""Création de nouveaux types personnalisés."""
+
 
 class Name(str):
     """Classe représentant un nom."""
@@ -26,7 +28,7 @@ class Name(str):
 
 
 class Gender(Enum):
-    """Classe représentant une énumération de constantes du genre d'un joueur du tournoi."""
+    """Classe créant une énumération de constantes qui représentent le genre d'un joueur du tournoi."""
     MALE = "M"
     FEMALE = "F"
 
@@ -40,8 +42,8 @@ class PositiveInt(int):
 
         Paramètres
         ----------
-        value : str
-            une chaîne de caractère représentant un nom
+        value : int
+            un entier positif
         Retour
         ------
         Retourne l'objet nouvellement créé ou lève une ValueError.
@@ -52,14 +54,14 @@ class PositiveInt(int):
 
 
 class TimeControl(Enum):
-    """Classe représentant une énumération de constantes du type de contrôle du temps d'un tournoi."""
+    """Classe créant une énumération de constantes qui représentent le type de contrôle du temps d'un tournoi."""
     BULLET = "bullet"
     BLITZ = "blitz"
     FASTMOVE = "coup rapide"
 
 
 class Score(Enum):
-    """Classe représentant une énumération de constantes du score d'un joueur du tournoi."""
+    """Classe créant une énumération de constantes qui représentent le score d'un joueur du tournoi."""
     WIN = 1.0
     LOSE = 0.0
     DRAW = 0.5

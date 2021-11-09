@@ -12,4 +12,4 @@ class Error(View):
         message : str
             Message de l'erreur
         """
-        super().__init__("Erreur", message, blocking=True)
+        super().__init__("Erreur", message, with_input=True)

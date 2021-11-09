@@ -13,7 +13,7 @@ class PlayerId(int):
         cls : la classe PlayerId
 
         value : int
-            Id d'un joueur
+            L'id d'un joueur
         Retour
         ------
         Retourne l'objet nouvellement créé ou lève une ValueError.

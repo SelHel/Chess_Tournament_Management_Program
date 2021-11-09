@@ -67,45 +67,149 @@
     },
     "tournaments": {
         "1": {
-            "description": "Championnat",
-            "end_date": "2021-11-07",
+            "description": "Championnat du monde d'\u00e9checs 2021",
+            "end_date": "2021-11-08",
             "id": 1,
-            "location": "Paris",
-            "name": "Tournoi de Paris",
-            "number_rounds": 2,
+            "location": "Duba\u00ef",
+            "name": "Championnat du monde",
+            "number_rounds": 4,
             "players": [
                 1,
-                2
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
             ],
             "rounds": [
                 {
-                    "end_time": "2021-11-07T17:52:57.077319",
+                    "end_time": "2021-11-08T16:06:40.487157",
                     "matches": [
                         {
+                            "id_player1": 4,
+                            "id_player2": 6,
+                            "score_player1": 1.0,
+                            "score_player2": 0.0
+                        },
+                        {
+                            "id_player1": 3,
+                            "id_player2": 7,
+                            "score_player1": 1.0,
+                            "score_player2": 0.0
+                        },
+                        {
+                            "id_player1": 2,
+                            "id_player2": 8,
+                            "score_player1": 1.0,
+                            "score_player2": 0.0
+                        },
+                        {
                             "id_player1": 1,
-                            "id_player2": 2,
+                            "id_player2": 5,
                             "score_player1": 1.0,
                             "score_player2": 0.0
                         }
                     ],
                     "name": "Round 1",
-                    "start_time": "2021-11-07T17:52:52.541175"
+                    "start_time": "2021-11-08T16:06:27.441163"
                 },
                 {
-                    "end_time": "2021-11-07T17:52:57.755222",
+                    "end_time": "2021-11-08T16:06:43.661557",
                     "matches": [
                         {
-                            "id_player1": 1,
-                            "id_player2": 2,
+                            "id_player1": 4,
+                            "id_player2": 3,
+                            "score_player1": 1.0,
+                            "score_player2": 0.0
+                        },
+                        {
+                            "id_player1": 2,
+                            "id_player2": 1,
+                            "score_player1": 1.0,
+                            "score_player2": 0.0
+                        },
+                        {
+                            "id_player1": 6,
+                            "id_player2": 7,
+                            "score_player1": 1.0,
+                            "score_player2": 0.0
+                        },
+                        {
+                            "id_player1": 8,
+                            "id_player2": 5,
                             "score_player1": 1.0,
                             "score_player2": 0.0
                         }
                     ],
                     "name": "Round 2",
-                    "start_time": "2021-11-07T17:52:52.541175"
+                    "start_time": "2021-11-08T16:06:27.441163"
+                },
+                {
+                    "end_time": "2021-11-08T16:06:46.889707",
+                    "matches": [
+                        {
+                            "id_player1": 4,
+                            "id_player2": 2,
+                            "score_player1": 1.0,
+                            "score_player2": 0.0
+                        },
+                        {
+                            "id_player1": 6,
+                            "id_player2": 8,
+                            "score_player1": 1.0,
+                            "score_player2": 0.0
+                        },
+                        {
+                            "id_player1": 3,
+                            "id_player2": 1,
+                            "score_player1": 1.0,
+                            "score_player2": 0.0
+                        },
+                        {
+                            "id_player1": 7,
+                            "id_player2": 5,
+                            "score_player1": 1.0,
+                            "score_player2": 0.0
+                        }
+                    ],
+                    "name": "Round 3",
+                    "start_time": "2021-11-08T16:06:27.441163"
+                },
+                {
+                    "end_time": "2021-11-08T16:06:50.191099",
+                    "matches": [
+                        {
+                            "id_player1": 4,
+                            "id_player2": 6,
+                            "score_player1": 1.0,
+                            "score_player2": 0.0
+                        },
+                        {
+                            "id_player1": 3,
+                            "id_player2": 2,
+                            "score_player1": 1.0,
+                            "score_player2": 0.0
+                        },
+                        {
+                            "id_player1": 7,
+                            "id_player2": 8,
+                            "score_player1": 1.0,
+                            "score_player2": 0.0
+                        },
+                        {
+                            "id_player1": 1,
+                            "id_player2": 5,
+                            "score_player1": 1.0,
+                            "score_player2": 0.0
+                        }
+                    ],
+                    "name": "Round 4",
+                    "start_time": "2021-11-08T16:06:27.441163"
                 }
             ],
-            "start_date": "2021-11-04",
+            "start_date": "2021-11-08",
             "time_control": "bullet"
         }
     }

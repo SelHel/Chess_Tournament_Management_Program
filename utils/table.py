@@ -17,17 +17,18 @@ class Table(Menu):
         Paramètres
         ----------
         title : str
-            Titre de la table
+            Le titre de la table
         items : List[Any]
-            Liste des éléments de la table
+            La liste des éléments de la table
         cols : List[Tuple[str, int, Callable[[Any], Any]]]
-            Liste des colonnes de la table
+            La liste des colonnes de la table
         choices: List[Tuple[str, str]]
-            Liste des choix de la table 
+            La liste des choix de la table
         """
         self.cols = cols
         super().__init__(title, choices, self._gen_content(items))
 
+    """Méthodes de classe privées permettant la mise en forme du contenu de la table."""
     def _gen_content(self, items: List[Any]):
         line_length = self._line_length()
         return "  " + self._format_header() + "\n" + \

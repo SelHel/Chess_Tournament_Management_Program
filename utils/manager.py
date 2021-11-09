@@ -13,7 +13,7 @@ class Manager:
         Paramètres
         ----------
         item_type: type
-            type de l'objet à gérer
+            Le type de l'objet à gérer
         """
         self.items = {}
         self.item_type = item_type
@@ -25,24 +25,24 @@ class Manager:
 
     def save_item(self, id: PositiveInt):
         """
-        Méthode permettant de sauvegarder un objet.
+        Méthode permettant de sauvegarder un objet dans la base de données.
 
         Paramètres
         ----------
         id : PositiveInt
-            un entier positif
+            L'id de l'objet à sauvegarder
         """
         item = self.find_by_id(id)
         self.table.upsert(Document(json.loads(item.json()), doc_id=id))
 
     def create_item(self, *args, **kwargs):
         """
-        Méthode permettant la création d'un objet et sauvegarde cet objet.
+        Méthode permettant la création puis la sauvegarde d'un objet dans la base de données.
 
         Paramètres
-        ---------
-        *args : arguments non clés
-        **kwargs : arguments de mots-clés
+        ----------
+        *args : arguments sans mots-clés
+        **kwargs : arguments avec mots-clés
 
         Retour
         ------
@@ -60,7 +60,7 @@ class Manager:
 
         Retour
         ------
-        Retourne la liste de tous les objets.
+        Retourne la liste de tous les objets de la classe item_type.
         """
         return list(self.items.values())
 
@@ -71,7 +71,7 @@ class Manager:
         Paramètres
         ----------
         id : any
-            id de l'objet
+            L'id de l'objet
 
         Retour
         ------

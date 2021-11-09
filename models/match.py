@@ -32,7 +32,8 @@ class Match(BaseModel):
 
         Retour
         ------
-        Retourne True si le total des scores est 1.0.
+        Retourne True si le total des scores est égal à 1.0.
+        Sinon retourne False.
         """
         return self.score_player1 + self.score_player2 == 1.0
 
@@ -40,6 +41,7 @@ class Match(BaseModel):
         """
         Méthode qui compare l'égalité de deux objets.
         Vérifie si l'objet other est une instance de la classe Match.
+        Si oui vérifie si les valeurs de self et de other sont égales.
 
         Paramètres
         ----------
@@ -48,8 +50,8 @@ class Match(BaseModel):
 
         Retour
         ------
-        Retourne un tuple avec l'id des ...
-        ou retourne False si l'objet other n'est pas une instance de la classe Match.
+        Retourne True si other est une instance de Match et si les valeurs des id des joueurs sont égaux,
+        sinon retourne False.
         """
         if isinstance(other, Match):
             return tuple(sorted((self.id_player1, self.id_player2))) == tuple(
