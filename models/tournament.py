@@ -167,7 +167,7 @@ class Tournament(BaseModel):
         """
         Méthode qui permet de générer les matchs des autres rounds du tournoi.
         Elle trie la liste des joueurs du tournoi en fonction de leur nombre total de points.
-        Si plusieurs joueurs ont le même nombre de points alors ils sont trier en fonction de leur rang.
+        Si plusieurs joueurs ont le même nombre de points alors ils sont trier en fonction de leur classement.
         Le premier joueur est jumelé avec le deuxième joueur et ainsi de suite pour toute la liste.
         On vérifie que les joueurs n'ont pas déjà joués l'un contre l'autre grâce à la méthode generate_match.
         Chaque match est ajouté au round du tournoi.
@@ -181,7 +181,6 @@ class Tournament(BaseModel):
         ------
             Retourne le round du tournoi.
         """
-        """Génère et retourne les autres rounds du tournoi."""
         players = sorted([pm.find_by_id(player_id) for player_id in self.players], key=lambda x: (
             -self.get_player_score(x.id), x.rank))
         while players:

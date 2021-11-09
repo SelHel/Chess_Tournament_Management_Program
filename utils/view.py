@@ -32,7 +32,7 @@ class View:
         ------
         Print le contenu ou affiche le contenu suivi d'un input.
         """
-        os.system("clear")
+        os.system("cls" if os.name == "nt" else "clear")
         print(self.title)
         print("-" * len(self.title))
         if self.content:

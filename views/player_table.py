@@ -26,8 +26,8 @@ class PlayerTable(Table):
                 ("Nom", 20, lambda x: x.last_name),
                 ("Prénom", 20, lambda x: x.first_name),
                 ("Date de naissance", 20, lambda x: x.birth_date.strftime("%d/%m/%Y")),
-                ("Sexe", 10, lambda x: x.gender.name),
-                ("Rang", 5, lambda x: x.rank)
+                ("Genre", 10, lambda x: x.gender.name),
+                ("Classement", 5, lambda x: x.rank)
             ], [(f"Trier par {'nom' if inv_sorting == 'by-name' else 'classement'}", f"/players/list/{inv_sorting}"),
                 ("Retour", "/players")
                 ])

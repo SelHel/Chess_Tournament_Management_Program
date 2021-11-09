@@ -7,7 +7,7 @@ class RoundTable(Table):
     """Classe représentant la table de rounds."""
     def __init__(self, rounds: List[Round]):
         """
-        Permet de construire un tableau des rounds.
+        Permet de construire la table des rounds.
 
         Paramètres
         ----------

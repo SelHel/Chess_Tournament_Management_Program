@@ -6,7 +6,8 @@ class Router:
     def __init__(self):
         """
         Construit les routes.
-        Chaque route représente un tuple qui associe une adresse à une fonction.
+        Chaque route représente un tuple qui associe une adresse à une fonction
+        qui garantit que les commandes utilisateurs soient exécutées correctement.
         exemple : ("/players/list/by-rank", players_all_rank_ctrl)
         """
         self.routes = []
@@ -28,14 +29,14 @@ class Router:
 
     def add_route(self, path: str, controller: Callable):
         """
-        Méthode permettant d'ajouter un chemin au routeur.
+        Méthode permettant d'ajouter une route au routeur.
 
         Paramètres
         ----------
         path : str
             Adresse de destination
         controller : Callable
-            Contrôleur (la fonction associée à l'adresse)
+            Le contrôleur (la fonction associée à l'adresse)
         """
         self.routes.append((path, controller))
 

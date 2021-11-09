@@ -72,22 +72,21 @@ def players_all_name_ctrl():
 def players_edit_ctrl():
     """
     Affiche le menu permettant d'effectuer un choix dans la liste de tous les joueurs.
-    Récupère le choix de l'utilisateur.
-    Renvoie l'utilisateur au formulaire de modification du classement d'un joueur.
-    Si choix = 0 renvoie l'utilisateur au menu de gestion des joueurs.
-    Sinon récupère le nouveau classement du joueur puis effectue sauvegarde.
-    Une fois le formulaire complété renvoie l'utilisateur au menu de gestion des joueurs.
+    Récupère le joueur choisit par l'utilisateur.
+    Renvoie l'utilisateur au formulaire de modification du classement du joueur.
+    Récupère le nouveau classement du joueur, effectue une sauvegarde puis
+    renvoie l'utilisateur au menu de gestion des joueurs.
     """
     while True:
         players = pm.find_all()
         player_id = PlayerChoiceMenu(players).display()
-        if player_id == 0:
+        if player_id == 0:  # Si l'utilisateur choisit "Retourner en arriere", le player_id sera égal 0.
             return router.navigate("/players")
         try:
             player = pm.find_by_id(player_id)
             player_str = f"Joueur {player.id}: {player.first_name} {player.last_name} Classement: {player.rank}"
-            rank = EditPlayerForm(player_str).display()  # If the user chooses "retourner en arriere", rank will be None
-            if not rank:
+            rank = EditPlayerForm(player_str).display()
+            if not rank:  # Si l'utilisateur choisit "Retourner en arriere", le rank sera None.
                 return router.navigate("/players")
             player.rank = rank["rank"]
             pm.save_item(player.id)
@@ -110,7 +109,7 @@ def tournaments_create_ctrl():
         players = pm.find_all()
         for i in range(data["nb_players"]):
             player_id = PlayerChoiceMenu(players).display()
-            if player_id == 0:
+            if player_id == 0:  # Si l'utilisateur choisit "Retourner en arriere", le player_id sera égal 0.
                 return router.navigate("/tournaments")
             data["players"].append(player_id)
             players = [player for player in players if player_id != player.id]
@@ -133,7 +132,7 @@ def tournaments_play_ctrl():
         all_tournaments = tm.find_all()
         tournaments = [i for i in all_tournaments if not i.is_over]
         tournament_id = TournamentChoiceMenu(tournaments).display()
-        if tournament_id == 0:
+        if tournament_id == 0:  # Si l'utilisateur choisit "Retourner en arriere", le tournament_id sera égal 0.
             return router.navigate("/tournaments")
         try:
             tournament = tm.find_by_id(tournament_id)
@@ -168,13 +167,12 @@ def tournaments_all_ctrl():
 def tournaments_rounds_ctrl():
     """
     Affiche le menu permettant d'effectuer un choix dans la liste de tous les tournois.
-    Si choix = 0 renvoie l'utilisateur au menu de gestion des tournois.
-    Sinon affiche la table des rounds du tournoi sélectionné.
+    Affiche la table des rounds du tournoi sélectionné.
     Puis renvoie l'utilisateur au menu de gestion des tournois.
     """
     tournaments = tm.find_all()
     tournament_id = TournamentChoiceMenu(tournaments).display()
-    if tournament_id == 0:
+    if tournament_id == 0:  # Si l'utilisateur choisit "Retourner en arriere", tournament_id sera égal 0.
         return router.navigate("/tournaments")
     try:
         tournament = tm.find_by_id(tournament_id)
@@ -187,18 +185,16 @@ def tournaments_rounds_ctrl():
 def tournaments_matches_ctrl():
     """
     Affiche le menu permettant d'effectuer un choix dans la liste de tous les tournois.
-    Si choix = 0 renvoie l'utilisateur au menu de gestion des tournois.
-    Sinon affiche la table des matchs de tous les rounds du tournoi sélectionné.
+    Affiche la table des matchs de tous les matchs du tournoi sélectionné.
     Puis renvoie l'utilisateur au menu de gestion des tournois.
     """
     tournaments = tm.find_all()
     tournament_id = TournamentChoiceMenu(tournaments).display()
-    if tournament_id == 0:
+    if tournament_id == 0:  # Si l'utilisateur choisit "Retourner en arriere", le tournament_id sera égal 0.
         return router.navigate("/tournaments")
     try:
         tournament = tm.find_by_id(tournament_id)
         for round in tournament.rounds:
-            print(round.name)
             MatchTable(round.matches).display()
         router.navigate("/tournaments")
     except KeyError:
