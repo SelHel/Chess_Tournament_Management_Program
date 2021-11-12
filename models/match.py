@@ -28,14 +28,14 @@ class Match(BaseModel):
     def played(self) -> bool:
         """
         Utilisation du décorateur @property pour accéder en tant que propriété à l'état d'un match.
-        La méthode played additionne les scores des joueurs du match pour vérifier si le match a déjà été joué.
+        La méthode played utilise le score du joueur 1 pour vérifier si le match a déjà été joué.
 
         Retour
         ------
-        Retourne True si le total des scores est égal à 1.0.
+        Retourne True si le score du joueur 1 n'est pas égal à -1.
         Sinon retourne False.
         """
-        return self.score_player1 + self.score_player2 == 1.0
+        return self.score_player1 != Score.UNKNOWN
 
     def __eq__(self, other: Any) -> bool:
         """

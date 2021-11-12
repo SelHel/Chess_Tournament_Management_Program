@@ -34,14 +34,14 @@ class Tournament(BaseModel):
     time_control : TimeControl
         Le type de contrôle du temps du tournoi
     description : str
-        La description du tournoi
+        Les remarques générales du directeur du tournoi
     """
     id: PositiveInt
     name: str
     location: str
     start_date: date = date.today()
     end_date: date = None
-    number_rounds: PositiveInt
+    number_rounds: PositiveInt = 4
     rounds: List[Round] = []
     players: List[PlayerId] = []
     time_control: TimeControl
@@ -109,9 +109,9 @@ class Tournament(BaseModel):
         score = 0.
         for match in self.played_matches:
             if match.id_player1 == player_id:
-                score += match.score_player1
+                score += match.score_player1.value
             elif match.id_player2 == player_id:
-                score += match.score_player2
+                score += match.score_player2.value
         return score
 
     def generate_first_round(self, rnd):

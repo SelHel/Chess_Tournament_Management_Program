@@ -16,6 +16,7 @@ from views.tournament_form import AddTournamentForm
 from views.player_choice_menu import PlayerChoiceMenu
 from utils.player_manager import pm
 from utils.tournament_manager import tm
+from utils.custom_types import Score
 
 """Les contrôleurs garantissent que les commandes utilisateurs soient exécutées correctement."""
 
@@ -123,9 +124,9 @@ def tournaments_create_ctrl():
 def tournaments_play_ctrl():
     """
     Affiche le menu permettant d'effectuer un choix dans la liste des tournois non terminés.
-    Si choix = 0 renvoie l'utilisateur au menu de gestion des tournois.
-    Sinon chaque match de chaque round du tournoi est joué et le menu permettant d'effectuer le choix du résultat d'un match
-    est afficher à chaque fin de match.
+    Joue chaque match de chaque round du tournoi et affiche le menu permettant d'effectuer le choix
+    du résultat d'un match à chaque fin de match.
+    Chaque round terminé est sauvegardé et l'utilisateur peut reprendre un tournoi là où il a été arrêté.
     Une fois le tournoi terminé il est sauvegardé puis l'utilisateur est renvoyé au menu de gestion des tournois.
     """
     while True:
@@ -137,13 +138,18 @@ def tournaments_play_ctrl():
         try:
             tournament = tm.find_by_id(tournament_id)
             for nb_rnd in range(1, tournament.number_rounds + 1):
+                if nb_rnd <= len(tournament.rounds):
+                    continue
                 rnd = tournament.generate_round(f"Round {nb_rnd}", nb_rnd)
+                rnd.start_time = datetime.now()
                 for match in rnd.matches:
                     result_p1 = ResultMenu(pm.find_by_id(match.id_player1),
                                            pm.find_by_id(match.id_player2), rnd).display()
+                    if result_p1 == 4:  # Si l'utilisateur choisit "Retourner en arriere", le result_p1 sera égal 4.
+                        return router.navigate("/tournaments")
                     result_p2 = 1 - result_p1
-                    match.score_player1 = result_p1
-                    match.score_player2 = result_p2
+                    match.score_player1 = Score(result_p1)
+                    match.score_player2 = Score(result_p2)
                 rnd.end_time = datetime.now()
                 tournament.rounds.append(rnd)
                 tm.save_item(tournament.id)

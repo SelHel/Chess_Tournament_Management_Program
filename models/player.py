@@ -29,7 +29,7 @@ class Player(BaseModel):
     gender: Gender
     rank: PositiveInt
 
-    def __str__(self) -> str: 
+    def __str__(self) -> str:
         """
         Méthode spéciale qui permet la représentation en chaîne de caractères de l'objet Player.
 

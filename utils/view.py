@@ -2,7 +2,24 @@ import os
 
 
 class View:
-    """Classe représentant une vue."""
+    """
+    Classe représentant une vue.
+
+    Attributs
+    ----------
+    title : str
+        Le titre de la vue
+    content : str, facultatif
+        Le contenu de la vue
+    with_input: bool
+        Paramètre pour indiquer si c'est un print(affichage classique) ou
+        si c'est un input(affichage puis attente d'une action utilisateur)
+
+    Méthodes
+    -------
+    display():
+        Méthode permettant d'afficher le titre et le contenu de la vue.
+    """
     def __init__(self, title: str, content: str = "", with_input: bool = False):
         """
         Construit tous les attributs nécessaires à l'objet View.
@@ -12,9 +29,9 @@ class View:
         Paramètres
         ----------
         title : str
-            Titre de la vue
+            Le titre de la vue
         content : str, facultatif
-            Contenu de la vue
+            Le contenu de la vue
         with_input: bool
             Paramètre pour indiquer si c'est un print(affichage classique) ou
             si c'est un input(affichage puis attente d'une action utilisateur)
@@ -25,8 +42,7 @@ class View:
 
     def display(self):
         """
-        Méthode permettant d'afficher une vue.
-        Affiche le titre et le contenu de la vue.
+        Méthode permettant d'afficher le titre et le contenu de la vue.
 
         Retour
         ------
