@@ -125,7 +125,7 @@ def tournaments_play_ctrl():
     """
     Affiche le menu permettant d'effectuer un choix dans la liste des tournois non terminés.
     Joue chaque match de chaque round du tournoi et affiche le menu permettant d'effectuer le choix
-    du résultat d'un match à chaque fin de match.
+    du résultat à chaque fin de match.
     Chaque round terminé est sauvegardé et l'utilisateur peut reprendre un tournoi là où il a été arrêté.
     Une fois le tournoi terminé il est sauvegardé puis l'utilisateur est renvoyé au menu de gestion des tournois.
     """
@@ -200,8 +200,10 @@ def tournaments_matches_ctrl():
         return router.navigate("/tournaments")
     try:
         tournament = tm.find_by_id(tournament_id)
+        matches = []
         for round in tournament.rounds:
-            MatchTable(round.matches).display()
-        router.navigate("/tournaments")
+            matches += round.matches
+        MatchTable(matches).display()
+        router.navigate("/tournaments/matches/list")
     except KeyError:
         Error("Veuillez saisir un id de tournoi valide.").display()
