@@ -41,7 +41,7 @@ class Tournament(BaseModel):
     location: str
     start_date: date = date.today()
     end_date: date = None
-    number_rounds: PositiveInt = 4
+    number_rounds: PositiveInt
     rounds: List[Round] = []
     players: List[PlayerId] = []
     time_control: TimeControl
