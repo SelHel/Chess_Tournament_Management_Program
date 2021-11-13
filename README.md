@@ -52,7 +52,7 @@ Le menu principal va apparaître, utilisez les numéros indiqués dans le(s) men
 Un rapport ne montrant aucune erreur de peluchage dans le code peut être généré à partir du terminal.<br/> Dans le terminal, lancez la commande :
 
 ```
-flake8 --format=html --htmldir=flake8_rapport
+flake8 --format=html --htmldir=flake8-rapport
 ```
 ---
 
