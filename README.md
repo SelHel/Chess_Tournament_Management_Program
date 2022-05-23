@@ -14,7 +14,7 @@ Il peut également générer des rapports et sauvegarder ou charger un tournoi �
 
 ## Installation du programme
 
-Après avoir téléchargé le dossier **OpenclassroomsProject4-main.zip** depuis ce lien [GitHub](https://github.com/SelHel/OpenclassroomsProject4).  
+Après avoir téléchargé le dossier **Chess_Tournament_Management_Program-main.zip** depuis ce lien [GitHub](https://github.com/SelHel/Chess_Tournament_Management_Program.git).  
 Extraire les fichiers dans un dossier de votre choix.  
 Ensuite, en utilisant le terminal sous Mac/Linux ou l'invite de commandes sous Windows :
 
@@ -69,8 +69,8 @@ It can generate reports and save or load tournament at any time with a database.
 
 ## Program installation
 
-Download the directory **OpenclassroomsProject4-main.zip** from this link
-[GitHub](https://github.com/SelHel/OpenclassroomsProject4).  
+Download the directory **Chess_Tournament_Management_Program-main.zip** from this link
+[GitHub](https://github.com/SelHel/Chess_Tournament_Management_Program.git).  
 Extract files in directory of your choice.<br/>
 Then using the terminal on Mac and Linux or the command prompt on Windows:
 
