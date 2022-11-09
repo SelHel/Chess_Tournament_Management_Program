@@ -95,7 +95,7 @@ git clone git@github.com:SelHel/Chess_Tournament_Management_Program.git
 
 Then go to the current directory as follows :
 ```
-cd Scraper-Books_to_Scrape-main
+cd Chess_Tournament_Management_Program-main
 ```
 
 Create a virtual environment :
