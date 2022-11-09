@@ -1,116 +1,131 @@
-*English version follows*
+*French version*
 
 # Programme de gestion de tournois d'échecs
 
-## Descriptif
+## 1. Descriptif
 
 Ce programme est une application hors ligne qui permet aux utilisateurs de gérer des tournois d'échecs.
 L'utilisateur peut suivre et mettre à jour les résultats d'un tournoi au fur et à mesure.<br/>
 La génération des paires de joueurs pour les matchs est gérée par un algorithme basé sur le système de tournois "suisse".<br/>
 Il peut également générer des rapports et sauvegarder ou charger un tournoi à tout moment grâce à une base de données.
 
-## Prérequis
-* Python 3.9 ( lien de téléchargement: <https://www.python.org/downloads>)
+## 2. Prérequis
+* Python 3+ (lien de téléchargement: <https://www.python.org/downloads>)
 
-## Installation du programme
+## 3. Bibliothèques Python utilisées
+* TinyDb
 
-Après avoir téléchargé le dossier **Chess_Tournament_Management_Program-main.zip** depuis ce lien [GitHub](https://github.com/SelHel/Chess_Tournament_Management_Program.git).  
-Extraire les fichiers dans un dossier de votre choix.  
-Ensuite, en utilisant le terminal sous Mac/Linux ou l'invite de commandes sous Windows :
+## 4. Installation
 
-* Placez vous dans le dossier courant.
-* Créez un environnement virtuel :
+Cloner le dépôt en utilisant le terminal sous Mac/Linux ou l'invite de commandes sous Windows :<br>
+```
+git clone git@github.com:SelHel/Chess_Tournament_Management_Program.git
+```
 
+Ensuite, placez vous dans le dossier courant :
+```
+cd Chess_Tournament_Management_Program-main
+```
+
+Puis créez votre environnement virtuel :
 ```
 python -m venv <your-virtual-env-name>
 ```
-* Activez votre environnement virtuel sous Windows :
 
+Activez votre environnement virtuel :
 ```
-<your-virtual-env-name>\Scripts\activate.bat
+<your-virtual-env-name>\Scripts\activate.bat (sous Windows)
 ```
-* Activez votre environnement virtuel sous Mac/Linux :
+ou
+	
+```
+source <your-virtual-env-name>/bin/activate (sous Mac/Linux)
+```
 
+Vous devez maintenant installer toutes les librairies nécessaires au bon fonctionnement de ce programme, pour cela exécuter la commande suivante :
 ```
-source <your-virtual-env-name>/bin/activate
+pip install -r requirements.txt
 ```
-* Installez les modules nécessaires au bon fonctionnement du programme depuis le fichier requirements.txt
+	
+## 5. Exécution
 
-```
- pip install -r requirements.txt
-```
-## Exécution du programme
-Pour éxécuter l'application lancez le script *"main.py"* :
-
+Pour éxécuter le programme lancez le script "main.py" avec la commande suivante :
 ```
 python main.py
-
 ```
-Le menu principal va apparaître, utilisez les numéros indiqués dans le(s) menu(s) pour naviguer et effectuer les actions voulues.
 
-## Générer un rapport flake8
-Un rapport ne montrant aucune erreur de peluchage dans le code peut être généré à partir du terminal.<br/> Dans le terminal, lancez la commande :
+Un menu va apparaître, utilisez les numéros indiqués dans le(s) menu(s) pour naviguer et effectuer les actions voulues.
 
+## 6. Générer un rapport flake8
+
+Vous pouvez générer un rapport flake8 avec la commande suivante :
 ```
 flake8 --format=html --htmldir=flake8-rapport
 ```
----
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+*Engish version*
 
 # Chess tournament management program
 
-## Description
+## 1. Description
 
 This program is an offline application that allows users to manage chess tournaments.
 The user can follow and update the results of tournament. <br/>
 It can generate reports and save or load tournament at any time with a database.
 
-## Requirements
+## 2. Requirements
 * Python 3.9 (download link: <https://www.python.org/downloads>)
 
-## Program installation
+## 3. Python libraries used
 
-Download the directory **Chess_Tournament_Management_Program-main.zip** from this link
-[GitHub](https://github.com/SelHel/Chess_Tournament_Management_Program.git).  
-Extract files in directory of your choice.<br/>
-Then using the terminal on Mac and Linux or the command prompt on Windows:
+## 4. Installation
 
+Clone repository using Terminal on Mac/Linux or Command Prompt on Windows:<br>
+```
+git clone git@github.com:SelHel/Chess_Tournament_Management_Program.git
+```
 
-* In current directory.
-* Create a virtual environment :
+Then go to the current directory as follows :
+```
+cd Scraper-Books_to_Scrape-main
+```
 
+Create a virtual environment :
 ```
 python -m venv <your-virtual-env-name>
 ```
-* Activate the virtual environment on Windows :
 
+Activate your virtual environment :
 ```
-<your-virtual-env-name>\Scripts\activate.bat
+<your-virtual-env-name>\Scripts\activate.bat (on Windows)
 ```
-* Activate the virtual environment on Mac/Linux :
+or
+	
+```
+source <your-virtual-env-name>/bin/activate (on Mac/Linux)
+```
 
+You now need to install all the libraries necessary for this program to work properly, for this run the following command :
 ```
-source <your-virtual-env-name>/bin/activate
+pip install -r requirements.txt
 ```
-* Install the necessary modules from requirements.txt file.
 
-```
- pip install -r requirements.txt
-```
-## Program execution
-To run the application launch the script *"main.py"* :
+## 5. Execution
+
+Run the program with the following command :
 
 ```
 python main.py
 
 ```
-Use the numbers on the main menu to navigate and make choices.
+Menu will appear. Use the numbers on the main menu to navigate and make choices.
 
-## Generate flake8 report
-A report certifying the flake8 compliance can be generated from the terminal.<br/> In the terminal, launch the command :
+## 6. Generate flake8 report
+
+Generate a flake8 report with the following command :
 
 ```
 flake8 --format=html --htmldir=flake8_rapport
 ```
-
-
-
