@@ -51,7 +51,7 @@ pip install -r requirements.txt
 	
 ## 5. Exécution
 
-Pour éxécuter le programme lancez le script "main.py" avec la commande suivante :
+Pour exécuter le programme lancez le script "main.py" avec la commande suivante :
 ```
 python main.py
 ```
