@@ -4,7 +4,7 @@
 
 ## 1. Descriptif
 
-Ce programme est une application hors ligne qui permet aux utilisateurs de gérer des tournois d'échecs.
+Ce programme est une application hors ligne qui permet aux utilisateurs de gérer des tournois d'échecs.<br/>
 L'utilisateur peut suivre et mettre à jour les résultats d'un tournoi au fur et à mesure.<br/>
 La génération des paires de joueurs pour les matchs est gérée par un algorithme basé sur le système de tournois "suisse".<br/>
 Il peut également générer des rapports et sauvegarder ou charger un tournoi à tout moment grâce à une base de données.
@@ -71,7 +71,7 @@ flake8 --format=html --htmldir=flake8-rapport
 
 ## 1. Description
 
-This program is an offline application that allows users to manage chess tournaments.
+This program is an offline application that allows users to manage chess tournaments.<br/>
 The user can follow and update the results of tournament. <br/>
 It can generate reports and save or load tournament at any time with a database.
 
