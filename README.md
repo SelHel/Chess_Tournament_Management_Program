@@ -124,7 +124,6 @@ Run the program with the following command :
 
 ```
 python main.py
-
 ```
 Menu will appear. Use the numbers on the main menu to navigate and make choices.
 
